@@ -38,7 +38,7 @@ app.use(routes)
 
 
 //error handling
-app.use((_req, _res, next) => {
+app.use((req, res, next) => {
   const err = new Error("The requested resource couldn't be found.");
   err.title = "Resource Not Found";
   err.errors = ["The requested resource couldn't be found."];
@@ -55,7 +55,7 @@ app.use((err, req, res, next) => {
   next(err);
 });
 
-app.use((err, _req, res, _next) => {
+app.use((err, req, res, next) => {
   res.status(err.status || 500);
   console.error(err);
   res.json({
