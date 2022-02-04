@@ -5,7 +5,7 @@ import * as sessionActions from "../../store/session";
 import './SignupForm.css'
 
 
-function SingUpForm () {
+function SignUpForm () {
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user)
     const [username, setUsername] = useState("");
@@ -35,7 +35,9 @@ function SingUpForm () {
     return (
         <form onSubmit={handleSubmit}>
             <ul>
-
+                {errors.map((error, errorId) =>
+                    <li key={errorId}>{error}</li>
+                )}
             </ul>
             <label>
                 Username
@@ -58,9 +60,18 @@ function SingUpForm () {
             <label>
                 Password
                 <input
-                    type="text"
+                    type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    required
+                />
+            </label>
+            <label>
+                Confirm Password
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfrimPassword(e.target.value)}
                     required
                 />
             </label>
@@ -70,4 +81,4 @@ function SingUpForm () {
 }
 
 
-export default SingUpForm;
+export default SignUpForm;
