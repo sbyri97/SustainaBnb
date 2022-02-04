@@ -12,6 +12,11 @@ function LoginFormPage () {
     const [password, setPassword] = useState("")
     const [errors, setErrors] = useState([]);
 
+    if(sessionUser) {
+        return (
+            <Redirect to='/' />
+        );
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,14 +28,9 @@ function LoginFormPage () {
             });
     }
 
-    if(sessionUser) {
-        return (
-            <Redirect to='/' />
-        );
-    }
 
     return(
-        <form onSubmit={{handleSubmit}}>
+        <form onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, errorId) => <li key={errorId}>
                     {error}
