@@ -35,19 +35,19 @@ module.exports = {
       lng: {
         type: Sequelize.DECIMAL
       },
-      guest_count: {
+      guestCount: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      bed_count: {
+      bedCount: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      bedroom_count: {
+      bedroomCount: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      bath_count: {
+      bathCount: {
         allowNull: false,
         type: Sequelize.STRING
       },

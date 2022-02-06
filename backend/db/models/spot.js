@@ -29,19 +29,19 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    guest_count: {
+    guestCount: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    bed_count: {
+    bedCount: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    bedroom_count: {
+    bedroomCount: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    bath_count: {
+    bathCount: {
       type: DataTypes.STRING,
       allowNull: false,
     },

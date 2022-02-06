@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import SignUpForm from "./components/SignUpForm";
 import * as sessionActions from './store/session'
 import Navigation from "./components/Navigation";
+import MainHostForm from "./components/HostForm/MainHostForm";
 
 
 
@@ -23,6 +24,9 @@ function App() {
         <Switch>
           <Route path="/signup">
             <SignUpForm />
+          </Route>
+          <Route path="/host-property">
+            <MainHostForm />
           </Route>
         </Switch>
       )}
