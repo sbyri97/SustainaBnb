@@ -59,8 +59,23 @@ module.exports = (sequelize, DataTypes) => {
     description: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
-      ,
+    },
+    isApartment: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    isHouse: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    isEntirePlace: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
+    isPrivateRoom: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
+    },
   }, {});
   Spot.associate = function(models) {
     Spot.belongsTo(models.User, { foreignKey: 'userId' })
