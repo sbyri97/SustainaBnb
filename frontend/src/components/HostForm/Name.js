@@ -1,6 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 
-export default function Location({nextStep, prevStep, states}) {
+export default function Description({nextStep, prevStep, states}) {
+
+    const [disableButton, setDisableButton] = useState(true)
+    const [titleErrFeedback, setTitleErrFeedback] = useState("")
 
     const next = (e) => {
         e.preventDefault();
@@ -18,35 +21,30 @@ export default function Location({nextStep, prevStep, states}) {
 
     return (
         <div>
-            <h2>Enter the address of your place.</h2>
+            <h2>Create your title</h2>
             <input
-                type="text"
-                value={address}
+                type="textarea"
+                placeholder='A beautiful eco-friendly luxury home'
+                value={name}
                 onChange={(e) => {
-                    setAddress(e.target.value)
+                    setName(e.target.value)
                 }}
-            /> Address
-            <br />
-            <input
-                type="text"
-                value={city}
-                onChange={(e) => {
-                    setCity(e.target.value)
-                }}
-            /> City
+            />
             <br />
             <button onClick={prev}>
                 Back
             </button>
             <button onClick={(e) => {
-                if(address && city) {
+                if(name) {
                     next(e)
+                    setDisableButton(false)
                 } else {
-                    alert('All address forms are required.')
+                    setTitleErrFeedback("Please enter a title")
                 }
-            }}>
+            }} isDisabled={disableButton}>
                 Next
             </button>
+            {titleErrFeedback && <div className='errFeedback'>{titleErrFeedback}</div>}
         </div>
     )
 }

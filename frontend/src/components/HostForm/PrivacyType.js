@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 
 export default function PrivacyType({nextStep, prevStep, states}) {
 
+    const [disableButton, setDisableButton] = useState(true)
+    const [privacyErrFeedback, setPrivacyErrFeedback] = useState("")
+
     const next = (e) => {
         e.preventDefault();
         nextStep();
@@ -47,12 +50,15 @@ export default function PrivacyType({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(isEntirePlace || isPrivateRoom) {
                     next(e)
+                    setDisableButton(false)
                 } else {
-                    alert('Please Select the Type of Space.')
+                    setPrivacyErrFeedback("Please select a type of space")
                 }
-            }}>
+            }} isDisabled={disableButton}>
                 Next
             </button>
+
+            {privacyErrFeedback && <div className='errFeedback'>{privacyErrFeedback}</div>}
         </div>
     )
 }

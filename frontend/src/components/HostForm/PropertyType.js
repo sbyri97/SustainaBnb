@@ -3,7 +3,8 @@ import React, { useState } from 'react'
 
 export default function PropertyType({nextStep, prevStep, states}) {
 
-    const [isChecked, setIsChecked] = useState(false)
+    const [disableButton, setDisableButton] = useState(true)
+    const [errFeedback, setErrFeedback] = useState("")
 
     const next = (e) => {
         e.preventDefault();
@@ -55,12 +56,15 @@ export default function PropertyType({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(isApartment || isHouse) {
                     next(e)
+                    setDisableButton(false)
                 } else {
-                    alert('Please Select the Type of Place.')
+                    setErrFeedback("Please select a property type")
                 }
-            }}>
+            }} isDisabled={disableButton}>
                 Next
             </button>
+
+            {errFeedback && <div className='errFeedback'>{errFeedback}</div>}
         </div>
     )
 }
