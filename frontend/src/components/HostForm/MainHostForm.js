@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PrivacyType from './PrivacyType';
 import PropertyType from './PropertyType';
 import Location from './Location';
+import FloorPlan from './FloorPlan';
 
 export default function MainHostForm() {
     const [step, setStep] = useState(1)
@@ -13,10 +14,10 @@ export default function MainHostForm() {
     const [city, setCity] = useState("");
     const [state, setState] = useState();
     const [country, setCountry] = useState();
-    const [guestCount, setGuestCount] = useState("");
-    const [bedCount, setBedCount] = useState("");
-    const [bedroomCount, setBedroomCount] = useState("");
-    const [bathCount, setBathCount] = useState("");
+    const [guestCount, setGuestCount] = useState(1);
+    const [bedCount, setBedCount] = useState(1);
+    const [bedroomCount, setBedroomCount] = useState(1);
+    const [bathCount, setBathCount] = useState(0.5);
     const [name, setName] = useState("");
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
@@ -88,7 +89,11 @@ export default function MainHostForm() {
             )
         case 5:
             return (
-                <h1>Floor Plan</h1>
+                <FloorPlan
+                nextStep={nextStep}
+                prevStep={prevStep}
+                states={states}
+                />
             )
         case 6:
             return (

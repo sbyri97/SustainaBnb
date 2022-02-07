@@ -44,7 +44,13 @@ export default function PrivacyType({nextStep, prevStep, states}) {
             <button onClick={prev}>
                 Back
             </button>
-            <button onClick={next}>
+            <button onClick={(e) => {
+                if(isEntirePlace || isPrivateRoom) {
+                    next(e)
+                } else {
+                    alert('Please Select the Type of Space.')
+                }
+            }}>
                 Next
             </button>
         </div>

@@ -41,7 +41,13 @@ export default function Location({nextStep, prevStep, states}) {
             <button onClick={prev}>
                 Back
             </button>
-            <button onClick={next}>
+            <button onClick={(e) => {
+                if(address && city) {
+                    next(e)
+                } else {
+                    alert('All address forms are required.')
+                }
+            }}>
                 Next
             </button>
         </div>

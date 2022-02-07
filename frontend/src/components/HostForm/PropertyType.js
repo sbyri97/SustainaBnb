@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import validator from 'validator'
 
 export default function PropertyType({nextStep, prevStep, states}) {
 
@@ -14,6 +15,10 @@ export default function PropertyType({nextStep, prevStep, states}) {
         prevStep();
     }
 
+    // const formValidator => {
+
+    // }
+
     const {setIsApartment, isApartment, isHouse, setIsHouse} = states
 
     return (
@@ -23,6 +28,7 @@ export default function PropertyType({nextStep, prevStep, states}) {
                 type="radio"
                 value={isApartment}
                 name='propertyType'
+                required
                 onClick={(e) => {
                     setIsApartment(!isApartment);
                     if(isHouse) {
@@ -46,7 +52,13 @@ export default function PropertyType({nextStep, prevStep, states}) {
             <button onClick={prev}>
                 Back
             </button>
-            <button onClick={next}>
+            <button onClick={(e) => {
+                if(isApartment || isHouse) {
+                    next(e)
+                } else {
+                    alert('Please Select the Type of Place.')
+                }
+            }}>
                 Next
             </button>
         </div>
