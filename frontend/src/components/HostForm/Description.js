@@ -37,11 +37,10 @@ export default function Description({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(description) {
                     next(e)
-                    setDisableButton(false)
                 } else {
                     setDescriptionErrFeedback("Please enter a description")
                 }
-            }} isDisabled={disableButton}>
+            }}>
                 Next
             </button>
             {descriptionErrFeedback && <div className='errFeedback'>{descriptionErrFeedback}</div>}

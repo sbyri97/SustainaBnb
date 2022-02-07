@@ -56,11 +56,10 @@ export default function PropertyType({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(isApartment || isHouse) {
                     next(e)
-                    setDisableButton(false)
                 } else {
                     setErrFeedback("Please select a property type")
                 }
-            }} isDisabled={disableButton}>
+            }} >
                 Next
             </button>
 

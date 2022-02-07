@@ -50,11 +50,10 @@ export default function PrivacyType({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(isEntirePlace || isPrivateRoom) {
                     next(e)
-                    setDisableButton(false)
                 } else {
                     setPrivacyErrFeedback("Please select a type of space")
                 }
-            }} isDisabled={disableButton}>
+            }}>
                 Next
             </button>
 

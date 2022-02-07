@@ -1,11 +1,19 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import * as spotActions from "../../store/spot";
 
 export default function Confirm({nextStep, prevStep, states}) {
 
+    const dispatch = useDispatch();
+
     const next = (e) => {
         e.preventDefault();
-        //send form data here//
         nextStep();
+        return(dispatch(spotActions.newSpot({
+            isApartment, isHouse, isEntirePlace, isPrivateRoom,
+            address, city, guestCount, bedCount,
+            bedroomCount, bathCount, name, price, description
+        })))
     };
 
     const prev = (e) => {

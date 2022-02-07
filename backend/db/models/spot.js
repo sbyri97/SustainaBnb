@@ -83,5 +83,19 @@ module.exports = (sequelize, DataTypes) => {
     Spot.hasMany(models.Booking, { foreignKey: 'spotId'})
     Spot.hasMany(models.Image, { foreignKey: 'spotId'})
   };
+
+  Spot.submit = async function ({
+    address, city, state, country, guestCount,
+    bedCount, bedroomCount, bathCount, name, price, description,
+    isApartment, isHouse, isEntirePlace, isPrivateRoom
+  }) {
+    const spot = await Spot.create({
+    address, city, state, country, guestCount,
+    bedCount, bedroomCount, bathCount, name, price, description,
+    isApartment, isHouse, isEntirePlace, isPrivateRoom
+    });
+    return await Spot.findByPK(spot.id)
+  };
+
   return Spot;
 };

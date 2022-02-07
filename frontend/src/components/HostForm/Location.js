@@ -48,11 +48,10 @@ export default function Location({nextStep, prevStep, states}) {
             <button onClick={(e) => {
                 if(address && city) {
                     next(e)
-                    setDisableButton(false)
                 } else {
                     setLocationErrFeedback("Please complete all the fields")
                 }
-            }} isDisabled={disableButton}>
+            }}>
                 Next
             </button>
             {locationErrFeedback && <div className='errFeedback'>{locationErrFeedback}</div>}
