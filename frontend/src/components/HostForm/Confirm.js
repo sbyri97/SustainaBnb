@@ -1,8 +1,9 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from "../../store/spot";
 
 export default function Confirm({nextStep, prevStep, states}) {
+    const userId = useSelector((state) => state.session.user.id);
 
     const dispatch = useDispatch();
 
@@ -12,7 +13,7 @@ export default function Confirm({nextStep, prevStep, states}) {
         return(dispatch(spotActions.newSpot({
             isApartment, isHouse, isEntirePlace, isPrivateRoom,
             address, city, guestCount, bedCount,
-            bedroomCount, bathCount, name, price, description
+            bedroomCount, bathCount, name, price, description, userId
         })))
     };
 

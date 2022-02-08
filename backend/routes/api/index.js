@@ -12,7 +12,7 @@ router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/host-property', spotRouter)
+router.use('/spot', spotRouter)
 
 module.exports = router;
 

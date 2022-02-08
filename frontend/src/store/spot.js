@@ -1,5 +1,7 @@
 import { csrfFetch } from "./csrf";
 
+
+
 const SUBMIT_SPOT = 'spot/SUBMITSPOT'
 
 const submitSpot = (spot) => {
@@ -10,10 +12,11 @@ const submitSpot = (spot) => {
 };
 
 export const newSpot = (spot) => async(dispatch) => {
+    
     const {
         address, city, state, country, guestCount,
         bedCount, bedroomCount, bathCount, name, price, description,
-        isApartment, isHouse, isEntirePlace, isPrivateRoom
+        isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
     } = spot;
 
     const response = await csrfFetch('/api/spot', {
@@ -21,7 +24,7 @@ export const newSpot = (spot) => async(dispatch) => {
         body: JSON.stringify({
             address, city, state, country, guestCount,
             bedCount, bedroomCount, bathCount, name, price, description,
-            isApartment, isHouse, isEntirePlace, isPrivateRoom
+            isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
         })
     });
 

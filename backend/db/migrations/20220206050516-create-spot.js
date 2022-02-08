@@ -22,11 +22,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       state: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       country: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       lat: {
@@ -49,7 +47,7 @@ module.exports = {
       },
       bathCount: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.DECIMAL(10,1)
       },
       name: {
         allowNull: false,
