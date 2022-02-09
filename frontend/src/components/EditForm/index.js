@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import PrivacyType from './PrivacyType';
 import PropertyType from './PropertyType';
@@ -11,13 +11,16 @@ import Price from './Price';
 import Confirm from './Confirm';
 import Success from './Success';
 import './HostForm.css'
+import * as spotActions from '../../store/spot'
 
 export default function EditHostForm() {
     const { spotId } = useParams()
 
     const sessionUser = useSelector((state) => state.session.user);
-    const spot = useSelector((state) => state.spot)
+    const spot = useSelector((state) => state.spot.spot[spotId])
     console.log('this is the', spot);
+
+    
     const [step, setStep] = useState(1)
     const [isApartment, setIsApartment] = useState(spot?.isApartment);
     const [isHouse, setIsHouse] = useState(spot?.isHouse);
@@ -34,6 +37,14 @@ export default function EditHostForm() {
     const [name, setName] = useState(spot?.name);
     const [price, setPrice] = useState(spot?.price);
     const [description, setDescription] = useState(spot?.description);
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (sessionUser) {
+          dispatch(spotActions.userListings(sessionUser.id));
+        }
+      }, [sessionUser, dispatch]);
 
     const nextStep = () => {
         setStep((step) => step + 1)
