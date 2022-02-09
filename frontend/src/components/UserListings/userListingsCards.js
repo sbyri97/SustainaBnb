@@ -31,6 +31,11 @@ function UserListings({ spot, onDelete }) {
           {spot.bathCount > 1 ? `${spot.bathCount} Baths` : "1 Bath"}
         </p>
       </div>
+      <div className="editButtons">
+        <button>
+          Edit Listing
+        </button>
+      </div>
       {onDelete && (
           <button className="remove-listing" onClick={() => onDelete()}>Delete</button>
       )}

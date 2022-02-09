@@ -4,6 +4,8 @@ import { csrfFetch } from "./csrf";
 
 const SUBMIT_SPOT = 'spot/SUBMITSPOT'
 const GET_USER_SPOTS = 'spot/GETUSERSPOTS'
+const REMOVE_SPOT = 'spot/REMOVESPOT'
+const EDIT_SPOT = 'spot/EDITSPOT'
 
 const submitSpot = (spot) => {
     return {
@@ -16,6 +18,20 @@ const getUserSpots = (userSpots) => {
     return {
         type: GET_USER_SPOTS,
         userSpots
+    }
+}
+
+const removeSpot = (spotId) => {
+    return {
+        type: REMOVE_SPOT,
+        spotId
+    }
+}
+
+const editSpot = (spot) => {
+    return {
+        type: EDIT_SPOT,
+        spot
     }
 }
 
@@ -43,8 +59,8 @@ export const newSpot = (spot) => async(dispatch) => {
     return response;
 }
 
-export const userListings = () => async(dispatch) => {
-    const response = await fetch('/api/spot');
+export const userListings = (userId) => async(dispatch) => {
+    const response = await fetch(`/api/users/${userId}/spots`);
 
     if(response.ok) {
         const userSpots = await response.json();
@@ -52,7 +68,38 @@ export const userListings = () => async(dispatch) => {
     }
 }
 
-const initialState = { spot: [] }
+export const deleteSpot = (spotId, userId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/users/${userId}/spot/delete`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            spotId
+        })
+    });
+
+    if(response.ok) {
+        const spot = await response.json();
+        console.log(spot)
+        dispatch(removeSpot(spot))
+    }
+}
+
+export const updateSpot = (spot) => async(dispatch) => {
+    const response = await fetch (`/api/users/${spot.userI}/spot/edit/${spot.spotId}/`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type' : 'application/json'
+        },
+        body: JSON.stringify(spot)
+    });
+
+    if(response.ok) {
+        const listing = await response.json();
+        dispatch(editSpot(listing));
+        return listing
+    }
+}
+
+const initialState = { spot: {} }
 
 export default function spotReducer(state = initialState, action) {
     let newState;
@@ -62,15 +109,23 @@ export default function spotReducer(state = initialState, action) {
             newState.spot = action.payload;
             return newState;
         case GET_USER_SPOTS:
-            const userSpots = {}
+            newState = {...state}
+            newState.spot = {}
             action.userSpots.forEach((userSpot) => {
-                userSpots[userSpot.id] = userSpot;
+                newState.spot[userSpot.id] = userSpot;
             });
             return {
                 ...state,
-                ...userSpots,
-                spot: action.userSpots
+                ...newState
             };
+        case REMOVE_SPOT:
+            newState = {...state};
+            delete newState[action.spot]
+            return newState
+        case EDIT_SPOT:
+            newState = {...state}
+            newState.spot[action.spot.id] = action.spot
+            return newState
         default:
             return state;
     }

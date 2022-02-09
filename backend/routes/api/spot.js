@@ -8,16 +8,6 @@ const router = express.Router();
 
 
 //find all listings by userId
-router.get('/', restoreUser, asyncHandler(async (req, res) => {
-  const { user } = req
-  const userSpots = await Spot.findAll({
-    where: {
-      userId: user.id
-    }
-  })
-
-  return res.json(userSpots)
-}))
 
 // post to the form route
 router.post(

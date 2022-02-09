@@ -30,7 +30,7 @@ function App() {
           <Route path="/host-property">
             <MainHostForm />
           </Route>
-          <Route path="/view-your-listings">
+          <Route path={`/api/users/:userId/spots`}>
             <UserSpots />
           </Route>
           <Route path='/spot/:spotId'>

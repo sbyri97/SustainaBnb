@@ -2,7 +2,7 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Spot } = require('../../db/models');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -27,6 +27,41 @@ const validateSignup = [
       .withMessage('Password must be 6 characters or more.'),
     handleValidationErrors
 ];
+
+router.get('/:userId(\\d+)/spots', restoreUser, asyncHandler(async (req, res) => {
+  const { userId } = req.params
+  const userSpots = await Spot.findAll({
+    where: {
+      userId
+    }
+  })
+
+  return res.json(userSpots)
+}))
+
+router.put(`/:userId(\\d+)/spot/edit/:spotId`, asyncHandler(async(req, res) => {
+  const { userId, spotId } = req.params
+  const editSpot = await Spot.findByPk(spotId, {
+    where: {
+      userId
+    }
+  })
+
+  return res.json(editSpot)
+}));
+
+router.delete('/:userId(\\d+)/spot/delete', asyncHandler(async(req, res) => {
+  const { spotId } = req.body
+  const { userId } = req.params
+  const spot = await Spot.findByPk(spotId, {
+    where: {
+      userId
+    }
+  })
+  const confirmedDelete = await spot.destroy();
+  return res.json(spot.id)
+}))
+
 
 router.post(
     '/',
