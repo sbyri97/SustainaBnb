@@ -1,11 +1,25 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 
-const { Spot } = require('../../db/models');
+const { Spot, User } = require('../../db/models');
+const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
 
-// get to the form route
+
+//find all listings by userId
+router.get('/', restoreUser, asyncHandler(async (req, res) => {
+  const { user } = req
+  const userSpots = await Spot.findAll({
+    where: {
+      userId: user.id
+    }
+  })
+
+  return res.json(userSpots)
+}))
+
+// post to the form route
 router.post(
   '/',
   asyncHandler(async (req, res) => {

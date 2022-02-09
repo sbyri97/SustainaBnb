@@ -7,12 +7,15 @@ const { requireAuth } = require('../../utils/auth.js');
 const sessionRouter = require('./session.js')
 const usersRouter = require('./users.js');
 const spotRouter = require('./spot')
+const listingsRouter = require('./listings')
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
 router.use('/spot', spotRouter)
+
+router.use('/listings', listingsRouter)
 
 module.exports = router;
 

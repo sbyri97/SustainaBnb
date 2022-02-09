@@ -5,6 +5,8 @@ import SignUpForm from "./components/SignUpForm";
 import * as sessionActions from './store/session'
 import Navigation from "./components/Navigation";
 import MainHostForm from "./components/HostForm/";
+import UserSpots from "./components/UserListings";
+import IndividualSpot from './components/IndividualSpot'
 
 
 
@@ -27,6 +29,12 @@ function App() {
           </Route>
           <Route path="/host-property">
             <MainHostForm />
+          </Route>
+          <Route path="/view-your-listings">
+            <UserSpots />
+          </Route>
+          <Route path='/spot/:spotId'>
+            <IndividualSpot />
           </Route>
         </Switch>
       )}
