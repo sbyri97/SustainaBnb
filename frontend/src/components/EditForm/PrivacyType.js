@@ -4,8 +4,6 @@ export default function PrivacyType({nextStep, prevStep, states}) {
 
     const [disableButton, setDisableButton] = useState(true)
     const [privacyErrFeedback, setPrivacyErrFeedback] = useState("")
-    const [isChecked, setIsChecked] = useState({isApartment: true, isHouse: false})
-
 
     const next = (e) => {
         e.preventDefault();
@@ -15,22 +13,6 @@ export default function PrivacyType({nextStep, prevStep, states}) {
     const prev = (e) => {
         e.preventDefault();
         prevStep();
-    }
-
-    const checkIsEntire = (e) => {
-        if(isEntirePlace) {
-            setIsChecked(true)
-        } else {
-            setIsChecked(false)
-        }
-    }
-
-    const checkIsPrivate = (e) => {
-        if(isPrivateRoom) {
-            setIsChecked(true)
-        } else {
-            setIsChecked(false)
-        }
     }
 
     const {setIsEntirePlace, isEntirePlace, isPrivateRoom, setIsPrivateRoom} = states
@@ -48,7 +30,6 @@ export default function PrivacyType({nextStep, prevStep, states}) {
                         setIsPrivateRoom(false)
                     };
                 }}
-                checked={isEntirePlace}
             /> Entire Place
             <br />
             <input
@@ -61,7 +42,6 @@ export default function PrivacyType({nextStep, prevStep, states}) {
                         setIsEntirePlace(false)
                     }
                 }}
-                checked={isPrivateRoom}
             /> Private Room
             <br />
             <button onClick={prev}>

@@ -2,8 +2,8 @@ import React, {useState} from 'react'
 
 export default function Description({nextStep, prevStep, states}) {
 
-
-    const [descriptionErrFeedback, setDescriptionErrFeedback] = useState("")
+    const [disableButton, setDisableButton] = useState(true)
+    const [titleErrFeedback, setTitleErrFeedback] = useState("")
 
     const next = (e) => {
         e.preventDefault();
@@ -16,18 +16,18 @@ export default function Description({nextStep, prevStep, states}) {
     }
 
     const {
-        description, setDescription
+        name, setName
     } = states
 
     return (
         <div>
-            <h2>Create your description</h2>
+            <h2>Create your title</h2>
             <input
-                type="text"
-                placeholder='Come expereince the peaceful oasis...'
-                value={description}
+                type="textarea"
+                placeholder='A beautiful eco-friendly luxury home'
+                value={name}
                 onChange={(e) => {
-                    setDescription(e.target.value)
+                    setName(e.target.value)
                 }}
             />
             <br />
@@ -35,15 +35,15 @@ export default function Description({nextStep, prevStep, states}) {
                 Back
             </button>
             <button onClick={(e) => {
-                if(description) {
+                if(name) {
                     next(e)
                 } else {
-                    setDescriptionErrFeedback("Please enter a description")
+                    setTitleErrFeedback("Please enter a title")
                 }
             }}>
                 Next
             </button>
-            {descriptionErrFeedback && <div className='errFeedback'>{descriptionErrFeedback}</div>}
+            {titleErrFeedback && <div className='errFeedback'>{titleErrFeedback}</div>}
         </div>
     )
 }

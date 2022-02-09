@@ -84,7 +84,7 @@ export const deleteSpot = (spotId, userId) => async(dispatch) => {
 }
 
 export const updateSpot = (spot) => async(dispatch) => {
-    const response = await fetch (`/api/users/${spot.userI}/spot/edit/${spot.spotId}/`, {
+    const response = await fetch (`/api/users/${spot.userId}/spot/edit/${spot.spotId}`, {
         method: 'PUT',
         headers: {
             'Content-Type' : 'application/json'

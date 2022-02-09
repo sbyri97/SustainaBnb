@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spot';
 import UserListings from './userListingsCards'
+import './UserListings.css'
 
 
 //here I need to get spots
@@ -11,7 +12,6 @@ export default function UserSpots() {
   const userSpotsArray = Object.values(spot);
   const dispatch = useDispatch();
   const [isloading, setIsLoading] = useState(true);
-  const [isUser, setIsUser] = useState(true)
 
   useEffect(() => {
     if (activeUser) {
@@ -34,7 +34,7 @@ export default function UserSpots() {
           {userSpotsArray && userSpotsArray.length > 0 ? (
             <div>
               <div>
-                <ul className="user-listing-card">
+                <ul className="row user-listing-card">
                   {userSpotsArray.map((spot) => (
                     <UserListings spot={spot} key={spot.id} />
                   ))}

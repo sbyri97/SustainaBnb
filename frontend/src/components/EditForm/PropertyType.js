@@ -3,9 +3,7 @@ import React, { useState } from 'react'
 
 export default function PropertyType({nextStep, prevStep, states}) {
 
-    const {setIsApartment, isApartment, isHouse, setIsHouse} = states
     const [disableButton, setDisableButton] = useState(true)
-    const [isChecked, setIsChecked] = useState({isApartment: true, isHouse: false})
     const [errFeedback, setErrFeedback] = useState("")
 
     const next = (e) => {
@@ -17,7 +15,13 @@ export default function PropertyType({nextStep, prevStep, states}) {
         e.preventDefault();
         prevStep();
     }
-    
+
+    // const formValidator => {
+
+    // }
+
+    const {setIsApartment, isApartment, isHouse, setIsHouse} = states
+
     return (
         <div>
             <h2>Select The Type Of Property</h2>
@@ -32,8 +36,7 @@ export default function PropertyType({nextStep, prevStep, states}) {
                         setIsHouse(false)
                     };
                 }}
-                checked={isApartment}
-                /> Apartment
+            /> Apartment
             <br />
             <input
                 type="radio"
@@ -45,7 +48,6 @@ export default function PropertyType({nextStep, prevStep, states}) {
                         setIsApartment(false)
                     }
                 }}
-                checked={isHouse}
             /> House
             <br />
             <button onClick={prev}>
