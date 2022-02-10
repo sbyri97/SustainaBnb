@@ -1,37 +1,33 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
-export default function Description({nextStep, prevStep, states}) {
+export default function Description({ nextStep, prevStep, states }) {
+  const [descriptionErrFeedback, setDescriptionErrFeedback] = useState("");
 
+  const next = (e) => {
+    e.preventDefault();
+    nextStep();
+  };
 
-    const [descriptionErrFeedback, setDescriptionErrFeedback] = useState("")
+  const prev = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
 
-    const next = (e) => {
-        e.preventDefault();
-        nextStep();
-    };
+  const { description, setDescription } = states;
 
-    const prev = (e) => {
-        e.preventDefault();
-        prevStep();
-    }
-
-    const {
-        description, setDescription
-    } = states
-
-    return (
-        <div>
-            <h2>Create your description</h2>
-            <input
-                type="text"
-                placeholder='Come expereince the peaceful oasis...'
-                value={description}
-                onChange={(e) => {
-                    setDescription(e.target.value)
-                }}
-            />
-            <br />
-            <button onClick={prev}>
+  return (
+    <div>
+      <h2>Create your description</h2>
+      <input
+        type="text"
+        placeholder="Come expereince the peaceful oasis..."
+        value={description}
+        onChange={(e) => {
+          setDescription(e.target.value);
+        }}
+      />
+      <br />
+      {/* <button onClick={prev}>
                 Back
             </button>
             <button onClick={(e) => {
@@ -42,8 +38,10 @@ export default function Description({nextStep, prevStep, states}) {
                 }
             }}>
                 Next
-            </button>
-            {descriptionErrFeedback && <div className='errFeedback'>{descriptionErrFeedback}</div>}
-        </div>
-    )
+            </button> */}
+      {descriptionErrFeedback && (
+        <div className="errFeedback">{descriptionErrFeedback}</div>
+      )}
+    </div>
+  );
 }

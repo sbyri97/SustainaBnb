@@ -1,37 +1,34 @@
-import React, {useState} from 'react'
+import React, { useState } from "react";
 
-export default function Description({nextStep, prevStep, states}) {
+export default function Description({ nextStep, prevStep, states }) {
+  const [disableButton, setDisableButton] = useState(true);
+  const [titleErrFeedback, setTitleErrFeedback] = useState("");
 
-    const [disableButton, setDisableButton] = useState(true)
-    const [titleErrFeedback, setTitleErrFeedback] = useState("")
+  const next = (e) => {
+    e.preventDefault();
+    nextStep();
+  };
 
-    const next = (e) => {
-        e.preventDefault();
-        nextStep();
-    };
+  const prev = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
 
-    const prev = (e) => {
-        e.preventDefault();
-        prevStep();
-    }
+  const { name, setName } = states;
 
-    const {
-        name, setName
-    } = states
-
-    return (
-        <div>
-            <h2>Create your title</h2>
-            <input
-                type="textarea"
-                placeholder='A beautiful eco-friendly luxury home'
-                value={name}
-                onChange={(e) => {
-                    setName(e.target.value)
-                }}
-            />
-            <br />
-            <button onClick={prev}>
+  return (
+    <div>
+      <h2>Create your title</h2>
+      <input
+        type="textarea"
+        placeholder="A beautiful eco-friendly luxury home"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      />
+      <br />
+      {/* <button onClick={prev}>
                 Back
             </button>
             <button onClick={(e) => {
@@ -42,8 +39,10 @@ export default function Description({nextStep, prevStep, states}) {
                 }
             }}>
                 Next
-            </button>
-            {titleErrFeedback && <div className='errFeedback'>{titleErrFeedback}</div>}
-        </div>
-    )
+            </button> */}
+      {titleErrFeedback && (
+        <div className="errFeedback">{titleErrFeedback}</div>
+      )}
+    </div>
+  );
 }

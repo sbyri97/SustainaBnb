@@ -1,70 +1,75 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-export default function PrivacyType({nextStep, prevStep, states}) {
+export default function PrivacyType({ nextStep, prevStep, states }) {
+  const [disableButton, setDisableButton] = useState(true);
+  const [privacyErrFeedback, setPrivacyErrFeedback] = useState("");
+  const [isChecked, setIsChecked] = useState({
+    isApartment: true,
+    isHouse: false,
+  });
 
-    const [disableButton, setDisableButton] = useState(true)
-    const [privacyErrFeedback, setPrivacyErrFeedback] = useState("")
-    const [isChecked, setIsChecked] = useState({isApartment: true, isHouse: false})
+  const next = (e) => {
+    e.preventDefault();
+    nextStep();
+  };
 
+  const prev = (e) => {
+    e.preventDefault();
+    prevStep();
+  };
 
-    const next = (e) => {
-        e.preventDefault();
-        nextStep();
-    };
-
-    const prev = (e) => {
-        e.preventDefault();
-        prevStep();
+  const checkIsEntire = (e) => {
+    if (isEntirePlace) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
     }
+  };
 
-    const checkIsEntire = (e) => {
-        if(isEntirePlace) {
-            setIsChecked(true)
-        } else {
-            setIsChecked(false)
-        }
+  const checkIsPrivate = (e) => {
+    if (isPrivateRoom) {
+      setIsChecked(true);
+    } else {
+      setIsChecked(false);
     }
+  };
 
-    const checkIsPrivate = (e) => {
-        if(isPrivateRoom) {
-            setIsChecked(true)
-        } else {
-            setIsChecked(false)
-        }
-    }
+  const { setIsEntirePlace, isEntirePlace, isPrivateRoom, setIsPrivateRoom } =
+    states;
 
-    const {setIsEntirePlace, isEntirePlace, isPrivateRoom, setIsPrivateRoom} = states
-
-    return (
-        <div>
-            <h2>Select The Type of Space</h2>
-            <input
-                type="radio"
-                value={isEntirePlace}
-                name='privacyType'
-                onClick={(e) => {
-                    setIsEntirePlace(!isEntirePlace);
-                    if(isPrivateRoom) {
-                        setIsPrivateRoom(false)
-                    };
-                }}
-                checked={isEntirePlace}
-            /> Entire Place
-            <br />
-            <input
-                type="radio"
-                value={isPrivateRoom}
-                name='privacyType'
-                onClick={(e) => {
-                    setIsPrivateRoom(!isPrivateRoom);
-                    if(isEntirePlace) {
-                        setIsEntirePlace(false)
-                    }
-                }}
-                checked={isPrivateRoom}
-            /> Private Room
-            <br />
-            <button onClick={prev}>
+  return (
+    <div>
+      <h2>Select The Type of Space</h2>
+      <input
+        type="radio"
+        value={isEntirePlace}
+        name="privacyType"
+        onClick={(e) => {
+          setIsEntirePlace(!isEntirePlace);
+          if (isPrivateRoom) {
+            setIsPrivateRoom(false);
+          }
+        }}
+        checked={isEntirePlace}
+        onChange={checkIsEntire}
+      />{" "}
+      Entire Place
+      <br />
+      <input
+        type="radio"
+        value={isPrivateRoom}
+        name="privacyType"
+        onClick={(e) => {
+          setIsPrivateRoom(!isPrivateRoom);
+          if (isEntirePlace) {
+            setIsEntirePlace(false);
+          }
+        }}
+        checked={isPrivateRoom}
+      />{" "}
+      Private Room
+      <br />
+      {/* <button onClick={prev}>
                 Back
             </button>
             <button onClick={(e) => {
@@ -75,9 +80,10 @@ export default function PrivacyType({nextStep, prevStep, states}) {
                 }
             }}>
                 Next
-            </button>
-
-            {privacyErrFeedback && <div className='errFeedback'>{privacyErrFeedback}</div>}
-        </div>
-    )
+            </button> */}
+      {privacyErrFeedback && (
+        <div className="errFeedback">{privacyErrFeedback}</div>
+      )}
+    </div>
+  );
 }

@@ -1,10 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import './UserListings.css'
+import * as spotActions from '../../store/spot';
+import { useEffect } from "react";
+
 
 function UserListings({ spot, onDelete }) {
-  const editButton = {
-    
+  const user = useSelector((state) => state.session.user)
+  const dispatch = useDispatch()
+  const history = useHistory()
+  const editButton = (e) => {
+    e.preventDefault();
+    let path = `/api/users/${user.id}/spot/edit/${spot.id}`
+    history.push(path)
   }
+
+
+
   return (
       <div className="column-spotDetails">
         <div className="spotCard">
@@ -29,13 +41,17 @@ function UserListings({ spot, onDelete }) {
               {spot.bedroomCount > 1 ? `${spot.bedroomCount} Bedrooms` : "1 Bedroom"}
             </p>
           </div>
-          <div className="editButtons">
-            <button>
+          <div className="buttons">
+            <button
+            className="theButton"
+            onClick={editButton}>
               Edit Listing
             </button>
           </div>
-          <div className="deleteButtons">
-            <button>
+          <div className="buttons">
+            <button
+            className="theButton"
+            >
               Delete Listing
             </button>
           </div>

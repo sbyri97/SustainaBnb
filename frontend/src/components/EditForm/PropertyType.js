@@ -16,6 +16,14 @@ export default function PropertyType({nextStep, prevStep, states}) {
         prevStep();
     }
 
+    const aptChecked = () => {
+        setIsApartment(false)
+    }
+
+    const houseChecked = () => {
+        setIsHouse(false)
+    }
+
     // const formValidator => {
 
     // }
@@ -36,6 +44,7 @@ export default function PropertyType({nextStep, prevStep, states}) {
                         setIsHouse(false)
                     };
                 }}
+                defaultChecked={isApartment}
             /> Apartment
             <br />
             <input
@@ -48,6 +57,7 @@ export default function PropertyType({nextStep, prevStep, states}) {
                         setIsApartment(false)
                     }
                 }}
+                defaultChecked={isHouse}
             /> House
             <br />
             <button onClick={prev}>

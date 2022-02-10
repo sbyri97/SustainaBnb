@@ -41,13 +41,26 @@ router.get('/:userId(\\d+)/spots', restoreUser, asyncHandler(async (req, res) =>
 
 router.put(`/:userId(\\d+)/spot/edit/:spotId`, asyncHandler(async(req, res) => {
   const { userId, spotId } = req.params
+  const {
+    address, city, state, country, guestCount,
+    bedCount, bedroomCount, bathCount, name, price, description,
+    isApartment, isHouse, isEntirePlace, isPrivateRoom
+  } = req.body;
+
   const editSpot = await Spot.findByPk(spotId, {
     where: {
       userId
     }
   })
 
-  return res.json(editSpot)
+const newEditedSpot = await editSpot.update({
+  address, city, state, country, guestCount,
+  bedCount, bedroomCount, bathCount, name, price, description,
+  isApartment, isHouse, isEntirePlace, isPrivateRoom
+})
+  console.log(newEditedSpot);
+
+  return res.json(newEditedSpot)
 }));
 
 router.delete('/:userId(\\d+)/spot/delete', asyncHandler(async(req, res) => {

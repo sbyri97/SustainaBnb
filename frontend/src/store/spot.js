@@ -83,13 +83,23 @@ export const deleteSpot = (spotId, userId) => async(dispatch) => {
     }
 }
 
-export const updateSpot = (spot) => async(dispatch) => {
-    const response = await fetch (`/api/users/${spot.userId}/spot/edit/${spot.spotId}`, {
+export const updateSpot = (spot, userId, spotId) => async(dispatch) => {
+    const {
+        address, city, state, country, guestCount,
+        bedCount, bedroomCount, bathCount, name, price, description,
+        isApartment, isHouse, isEntirePlace, isPrivateRoom
+    } = spot;
+
+    const response = await csrfFetch (`/api/users/${userId}/spot/edit/${spotId}`, {
         method: 'PUT',
         headers: {
             'Content-Type' : 'application/json'
         },
-        body: JSON.stringify(spot)
+        body: JSON.stringify({
+            address, city, state, country, guestCount,
+            bedCount, bedroomCount, bathCount, name, price, description,
+            isApartment, isHouse, isEntirePlace, isPrivateRoom
+        })
     });
 
     if(response.ok) {

@@ -30,6 +30,7 @@ export default function PrivacyType({nextStep, prevStep, states}) {
                         setIsPrivateRoom(false)
                     };
                 }}
+                defaultChecked={isEntirePlace}
             /> Entire Place
             <br />
             <input
@@ -42,6 +43,7 @@ export default function PrivacyType({nextStep, prevStep, states}) {
                         setIsEntirePlace(false)
                     }
                 }}
+                defaultChecked={isPrivateRoom}
             /> Private Room
             <br />
             <button onClick={prev}>

@@ -1,0 +1,46 @@
+.firstPage-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.firstPage {
+  /* flex-grow: 1; */
+  width: 50%;
+}
+.firstPage.side {
+  background: linear-gradient(
+    0deg,
+    rgba(74, 45, 156, 1) 0%,
+    rgba(74, 45, 156, 1) 36%,
+    rgba(202, 43, 125, 1) 78%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstPage.content {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  color: white;
+  justify-content: space-between;
+}
+
+.primary-content {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-container {
+  background-color: red;
+  color: white;
+  text-align: center;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -5,9 +5,9 @@ import SignUpForm from "./components/SignUpForm";
 import * as sessionActions from './store/session'
 import Navigation from "./components/Navigation";
 import MainHostForm from "./components/HostForm/";
-import EditHostForm from "./components/EditForm";
 import UserSpots from "./components/UserListings";
 import IndividualSpot from './components/IndividualSpot'
+import LaodingData from "./components/EditForm";
 
 
 
@@ -35,7 +35,7 @@ function App() {
             <UserSpots />
           </Route>
           <Route path={`/api/users/:userId/spot/edit/:spotId`}>
-            <EditHostForm />
+            <LaodingData />
           </Route>
           <Route path='/spot/:spotId'>
             <IndividualSpot />

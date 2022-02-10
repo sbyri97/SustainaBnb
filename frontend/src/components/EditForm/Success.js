@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 import * as spotActions from '../../store/spot';
 
 
@@ -12,7 +12,7 @@ export default function Success() {
     const dispatch = useDispatch()
     const handleSubmit = () => {
         dispatch(spotActions.userListings())
-        let path = `api/users/${user.id}/spots`
+        let path = `/api/users/${user.id}/spots`
         history.push(path)
     }
     return (

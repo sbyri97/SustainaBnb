@@ -13,14 +13,26 @@ import Success from './Success';
 import './HostForm.css'
 import * as spotActions from '../../store/spot'
 
-export default function EditHostForm() {
+export default function LaodingData() {
     const { spotId } = useParams()
-
+    const dispatch = useDispatch()
     const sessionUser = useSelector((state) => state.session.user);
     const spot = useSelector((state) => state.spot.spot[spotId])
-    console.log('this is the', spot);
+    useEffect(() => {
+        if (sessionUser) {
+          dispatch(spotActions.userListings(sessionUser.id));
+        }
+      }, [sessionUser, dispatch]);
+    if(!spot) return null
+    return (
+        <EditHostForm
+        sessionUser={sessionUser}
+        spot={spot}
+        />
+    )
+}
 
-    
+export function EditHostForm({sessionUser, spot}) {
     const [step, setStep] = useState(1)
     const [isApartment, setIsApartment] = useState(spot?.isApartment);
     const [isHouse, setIsHouse] = useState(spot?.isHouse);
@@ -38,13 +50,6 @@ export default function EditHostForm() {
     const [price, setPrice] = useState(spot?.price);
     const [description, setDescription] = useState(spot?.description);
 
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (sessionUser) {
-          dispatch(spotActions.userListings(sessionUser.id));
-        }
-      }, [sessionUser, dispatch]);
 
     const nextStep = () => {
         setStep((step) => step + 1)
@@ -73,13 +78,13 @@ export default function EditHostForm() {
     }
 
     // const handleInputChange = (input) => e => {
-    //     this.setState({[input]: e.target.value})
-    // }
-    if(sessionUser) {
-        switch (step) {
-            case 1:
-                return (
-                    <div>
+        //     this.setState({[input]: e.target.value})
+        // }
+        if(sessionUser) {
+            switch (step) {
+                case 1:
+                    return (
+                        <div>
                         <h1>Click to follow 7 easy steps to hosting</h1>
                         <button onClick={nextStep}>
                             Next
