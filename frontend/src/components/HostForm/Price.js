@@ -38,18 +38,6 @@ export default function Price({ nextStep, prevStep, states }) {
       </button>
       <h2>per night</h2>
       <br />
-      {/* <button onClick={prev}>
-                Back
-            </button>
-            <button onClick={(e) => {
-                if(price) {
-                    next(e)
-                } else {
-                    alert('Must enter Price.')
-                }
-            }}>
-                Next
-            </button> */}
     </div>
   );
 }

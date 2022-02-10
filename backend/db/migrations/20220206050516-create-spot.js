@@ -61,21 +61,13 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      isApartment: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+      propertyType: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
-      isHouse: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
-      isEntirePlace: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
-      },
-      isPrivateRoom: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false
+      privacyType: {
+        type: Sequelize.STRING,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

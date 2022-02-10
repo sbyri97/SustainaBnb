@@ -1,21 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Description({ nextStep, prevStep, states }) {
-  const [disableButton, setDisableButton] = useState(true);
-  const [titleErrFeedback, setTitleErrFeedback] = useState("");
-
-  const next = (e) => {
-    e.preventDefault();
-    nextStep();
-  };
-
-  const prev = (e) => {
-    e.preventDefault();
-    prevStep();
-  };
-
-  const { name, setName } = states;
-
+export default function Description({ name, setName }) {
   return (
     <div>
       <h2>Create your title</h2>
@@ -28,21 +13,6 @@ export default function Description({ nextStep, prevStep, states }) {
         }}
       />
       <br />
-      {/* <button onClick={prev}>
-                Back
-            </button>
-            <button onClick={(e) => {
-                if(name) {
-                    next(e)
-                } else {
-                    setTitleErrFeedback("Please enter a title")
-                }
-            }}>
-                Next
-            </button> */}
-      {titleErrFeedback && (
-        <div className="errFeedback">{titleErrFeedback}</div>
-      )}
     </div>
   );
 }

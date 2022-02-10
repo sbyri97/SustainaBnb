@@ -58,21 +58,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      isApartment: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+      propertyType: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
-      isHouse: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
-      isEntirePlace: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
-      },
-      isPrivateRoom: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false,
+      privacyType: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
     },
     {
@@ -84,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
   Spot.associate = function(models) {
-    Spot.belongsTo(models.User, { foreignKey: 'userId' })
+    Spot.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade'})
     Spot.hasMany(models.Review, { foreignKey: 'spotId'})
     Spot.hasMany(models.Booking, { foreignKey: 'spotId'})
     Spot.hasMany(models.Image, { foreignKey: 'spotId'})
@@ -93,12 +85,12 @@ module.exports = (sequelize, DataTypes) => {
   Spot.submit = async function ({
     address, city, state, country, guestCount,
     bedCount, bedroomCount, bathCount, name, price, description,
-    isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
+    propertyType, privacyType, userId
   }) {
     const spot = await Spot.create({
     address, city, state, country, guestCount,
     bedCount, bedroomCount, bathCount, name, price, description,
-    isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
+    propertyType, privacyType, userId
     });
     return await Spot.findByPk(spot.id)
   };

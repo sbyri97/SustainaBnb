@@ -15,11 +15,11 @@ router.post(
   asyncHandler(async (req, res) => {
     const { address, city, state, country, guestCount,
       bedCount, bedroomCount, bathCount, name, price, description,
-      isApartment, isHouse, isEntirePlace, isPrivateRoom, userId } = req.body;
+      propertyType, privacyType, userId } = req.body;
 
     const spot = await Spot.submit({ address, city, state, country, guestCount,
       bedCount, bedroomCount, bathCount, name, price, description,
-      isApartment, isHouse, isEntirePlace, isPrivateRoom, userId });
+      propertyType, privacyType, userId });
 
     return res.json({
       spot

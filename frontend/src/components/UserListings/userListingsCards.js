@@ -2,18 +2,30 @@ import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import './UserListings.css'
 import * as spotActions from '../../store/spot';
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 
-function UserListings({ spot, onDelete }) {
+function UserListings({ spot }) {
   const user = useSelector((state) => state.session.user)
+
   const dispatch = useDispatch()
   const history = useHistory()
+
   const editButton = (e) => {
     e.preventDefault();
     let path = `/api/users/${user.id}/spot/edit/${spot.id}`
     history.push(path)
   }
+
+  const [deleteSpot, setDeleteSpot] = useState(false)
+  const handleDelete = (e) => {
+    e.preventDefault();
+    setDeleteSpot(true)
+  }
+
+  useEffect(() => {
+    dispatch(spotActions.deleteSpot(spot.id, user.id))
+  }, [dispatch, deleteSpot])
 
 
 
@@ -50,14 +62,12 @@ function UserListings({ spot, onDelete }) {
           </div>
           <div className="buttons">
             <button
+            onClick={handleDelete}
             className="theButton"
             >
               Delete Listing
             </button>
           </div>
-          {onDelete && (
-              <button className="remove-listing" onClick={() => onDelete()}>Delete</button>
-          )}
         </div>
       </div>
   );

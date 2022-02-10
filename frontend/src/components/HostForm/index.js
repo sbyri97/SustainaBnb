@@ -18,28 +18,25 @@ import StepFooter from "./StepFooter";
 export default function MainHostForm() {
   const sessionUser = useSelector((state) => state.session.user);
   const [step, setStep] = useState(0);
-  const [isApartment, setIsApartment] = useState(false);
-  const [isHouse, setIsHouse] = useState(false);
 
   const [propertyType, setPropertyType] = useState();
-
-  const [isEntirePlace, setIsEntirePlace] = useState(false);
-  const [isPrivateRoom, setIsPrivateRoom] = useState(false);
+  const [privacyType, setPrivacyType] = useState();
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-
   const [state, setState] = useState();
   const [country, setCountry] = useState();
+
   const [guestCount, setGuestCount] = useState(1);
   const [bedCount, setBedCount] = useState(1);
   const [bedroomCount, setBedroomCount] = useState(1);
   const [bathCount, setBathCount] = useState(0.5);
+
   const [name, setName] = useState("");
   const [price, setPrice] = useState(300);
   const [description, setDescription] = useState("");
+
   const dispatch = useDispatch();
-  const { spotId } = useParams();
   const userId = useSelector((state) => state.session.user.id);
 
   const questions = [
@@ -55,12 +52,10 @@ export default function MainHostForm() {
   ];
 
   const nextStep = () => {
-    if (step === 7) {
+    if (step === 8) {
       const spot = {
-        isApartment,
-        isHouse,
-        isEntirePlace,
-        isPrivateRoom,
+        propertyType,
+        privacyType,
         address,
         city,
         state,
@@ -74,7 +69,7 @@ export default function MainHostForm() {
         description,
         userId,
       };
-      return dispatch(spotActions.newSpot(spot));
+      dispatch(spotActions.newSpot(spot));
     }
     setStep((step) => step + 1);
   };
@@ -84,14 +79,10 @@ export default function MainHostForm() {
   };
 
   const states = {
-    isApartment,
-    setIsApartment,
-    isHouse,
-    setIsHouse,
-    isEntirePlace,
-    setIsEntirePlace,
-    isPrivateRoom,
-    setIsPrivateRoom,
+    propertyType,
+    setPropertyType,
+    privacyType,
+    setPrivacyType,
     address,
     setAddress,
     city,
@@ -117,8 +108,9 @@ export default function MainHostForm() {
   };
 
   const disabledStateOnStepper = [
-    () => false,
+    () => false, //0
     () => !propertyType,
+    () => false,
     () => false,
     () => false,
     () => false,
@@ -137,24 +129,18 @@ export default function MainHostForm() {
           <PropertyType
             propertyType={propertyType}
             setPropertyType={setPropertyType}
-            nextStep={nextStep}
-            prevStep={prevStep}
-            states={states}
           />
         );
       case 2:
         return (
           <PrivacyType
-            nextStep={nextStep}
-            prevStep={prevStep}
-            states={states}
+          privacyType={privacyType}
+          setPrivacyType={setPrivacyType}
           />
         );
       case 3:
         return (
           <Location
-            nextStep={nextStep}
-            prevStep={prevStep}
             city={city}
             setCity={setCity}
             address={address}
@@ -166,7 +152,7 @@ export default function MainHostForm() {
           <FloorPlan nextStep={nextStep} prevStep={prevStep} states={states} />
         );
       case 5:
-        return <Name nextStep={nextStep} prevStep={prevStep} states={states} />;
+        return <Name name={name} setName={setName} />;
       case 6:
         return (
           <Price nextStep={nextStep} prevStep={prevStep} states={states} />
@@ -174,9 +160,8 @@ export default function MainHostForm() {
       case 7:
         return (
           <Description
-            nextStep={nextStep}
-            prevStep={prevStep}
-            states={states}
+            description={description}
+            setDescription={setDescription}
           />
         );
       case 8:
@@ -196,7 +181,7 @@ export default function MainHostForm() {
         </div>
         <div className="firstPage content">
           <div className="primary-content">{getStepRightSide()}</div>
-          {step !== 9 && (
+          {step !== 10 && (
             <StepFooter
               disabledStateOnStepper={disabledStateOnStepper[step]}
               nextStep={nextStep}

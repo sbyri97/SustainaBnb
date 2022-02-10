@@ -42,7 +42,7 @@ export const newSpot = (spot) => async(dispatch) => {
     const {
         address, city, state, country, guestCount,
         bedCount, bedroomCount, bathCount, name, price, description,
-        isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
+        propertyType, privacyType, userId
     } = spot;
 
     const response = await csrfFetch('/api/spot', {
@@ -50,7 +50,7 @@ export const newSpot = (spot) => async(dispatch) => {
         body: JSON.stringify({
             address, city, state, country, guestCount,
             bedCount, bedroomCount, bathCount, name, price, description,
-            isApartment, isHouse, isEntirePlace, isPrivateRoom, userId
+            propertyType, privacyType, userId
         })
     });
 
@@ -87,7 +87,7 @@ export const updateSpot = (spot, userId, spotId) => async(dispatch) => {
     const {
         address, city, state, country, guestCount,
         bedCount, bedroomCount, bathCount, name, price, description,
-        isApartment, isHouse, isEntirePlace, isPrivateRoom
+        propertyType, privacyType
     } = spot;
 
     const response = await csrfFetch (`/api/users/${userId}/spot/edit/${spotId}`, {
@@ -98,7 +98,7 @@ export const updateSpot = (spot, userId, spotId) => async(dispatch) => {
         body: JSON.stringify({
             address, city, state, country, guestCount,
             bedCount, bedroomCount, bathCount, name, price, description,
-            isApartment, isHouse, isEntirePlace, isPrivateRoom
+            propertyType, privacyType
         })
     });
 

@@ -114,12 +114,6 @@ export default function FloorPlan({ nextStep, prevStep, states }) {
         </button>
       </div>
       <br />
-      {/* <button onClick={prev}>
-                Back
-            </button>
-            <button onClick={next}>
-                Next
-            </button> */}
     </div>
   );
 }
