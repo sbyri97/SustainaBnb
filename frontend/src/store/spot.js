@@ -129,11 +129,12 @@ export default function spotReducer(state = initialState, action) {
                 ...newState
             };
         case REMOVE_SPOT:
-            newState = {...state};
-            delete newState[action.spot]
+            console.log(action.spotId);
+            newState = {...state, spot: {...state.spot}};
+            delete newState.spot[action.spotId]
             return newState
         case EDIT_SPOT:
-            newState = {...state}
+            newState = {...state, spot: {...state.spot}}
             newState.spot[action.spot.id] = action.spot
             return newState
         default:

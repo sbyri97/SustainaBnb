@@ -17,16 +17,12 @@ function UserListings({ spot }) {
     history.push(path)
   }
 
-  const [deleteSpot, setDeleteSpot] = useState(false)
+  const [deleteSpot, setDeleteSpot] = useState()
   const handleDelete = (e) => {
     e.preventDefault();
+    dispatch(spotActions.deleteSpot(spot.id, user.id))
     setDeleteSpot(true)
   }
-
-  useEffect(() => {
-    dispatch(spotActions.deleteSpot(spot.id, user.id))
-  }, [dispatch, deleteSpot])
-
 
 
   return (
