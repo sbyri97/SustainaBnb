@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import './Navigation.css'
+import Logo from "./logo"
 
 function Navigation ({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -11,21 +12,26 @@ function Navigation ({ isLoaded }) {
     let authLinks;
     if (sessionUser) {
         authLinks = (
-            <ProfileButton user={sessionUser} />
+            <div className="navHeader">
+                <Logo />
+                <ProfileButton user={sessionUser} />
+            </div>
         );
     } else {
         authLinks = (
-            <>
+            <div className="navHeader">
+                <Logo />
                 <LoginFormModal />
-                <NavLink to="/signup">Sign Up</NavLink>
-            </>
+                <div className="signUpDiv">
+                    <NavLink className='signButton' to="/signup">Sign Up</NavLink>
+                </div>
+            </div>
         );
     }
 
     return (
         <ul>
             <li>
-                <NavLink to='/' >Home</NavLink>
                 {isLoaded && authLinks}
             </li>
         </ul>

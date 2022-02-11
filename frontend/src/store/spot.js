@@ -6,6 +6,7 @@ const SUBMIT_SPOT = 'spot/SUBMITSPOT'
 const GET_USER_SPOTS = 'spot/GETUSERSPOTS'
 const REMOVE_SPOT = 'spot/REMOVESPOT'
 const EDIT_SPOT = 'spot/EDITSPOT'
+const SINGLE_SPOT = 'spot/SINGLESPOT'
 
 const submitSpot = (spot) => {
     return {
@@ -35,6 +36,21 @@ const editSpot = (spot) => {
     }
 }
 
+const getSingleSpot = (singleSpot) => {
+    return {
+        type: SINGLE_SPOT,
+        singleSpot
+    }
+}
+
+export const indivSpot = (spotId) => async(dispatch) => {
+    const response = await fetch(`/api/spot/${spotId}`);
+
+    if(response.ok) {
+        const singleSpot = await response.json()
+        dispatch(getSingleSpot(singleSpot))
+    }
+}
 
 
 export const newSpot = (spot) => async(dispatch) => {
@@ -127,8 +143,11 @@ export default function spotReducer(state = initialState, action) {
                 ...state,
                 ...newState
             };
+        case SINGLE_SPOT:
+            newState = {...state}
+            newState.spot[action.singleSpot.id] = action.singleSpot
+            return newState
         case REMOVE_SPOT:
-            console.log(action.spotId);
             newState = {...state, spot: {...state.spot}};
             delete newState.spot[action.spotId]
             return newState

@@ -35,9 +35,11 @@ export default function MainHostForm() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(300);
   const [description, setDescription] = useState("");
-
   const dispatch = useDispatch();
-  const userId = useSelector((state) => state.session.user.id);
+
+
+if (sessionUser) {
+  const userId = sessionUser.id;
 
   const questions = [
     "Host Your Sustainable Property in 9 Steps",
@@ -151,7 +153,7 @@ export default function MainHostForm() {
             setCountry={setCountry}
           />
         );
-      case 4:
+        case 4:
         return (
           <FloorPlan nextStep={nextStep} prevStep={prevStep} states={states} />
         );
@@ -179,7 +181,6 @@ export default function MainHostForm() {
     }
   };
 
-  if (sessionUser) {
     return (
       <div className="firstPage-container">
         <div className="firstPage side">
@@ -199,6 +200,6 @@ export default function MainHostForm() {
       </div>
     );
   } else {
-    return <h1> Please Login or Signup</h1>;
+    return <h1 className="pleaseLogin"> Please Login or Signup</h1>;
   }
 }

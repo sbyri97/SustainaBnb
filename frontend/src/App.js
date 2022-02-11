@@ -28,6 +28,9 @@ function App() {
           <Route path="/signup">
             <SignUpForm />
           </Route>
+          <Route path='/spot/:spotId'>
+            <IndividualSpot />
+          </Route>
           <Route path="/host-property">
             <MainHostForm />
           </Route>
@@ -36,9 +39,6 @@ function App() {
           </Route>
           <Route path={`/api/users/:userId/spot/edit/:spotId`}>
             <LaodingData />
-          </Route>
-          <Route path='/spot/:spotId'>
-            <IndividualSpot />
           </Route>
         </Switch>
       )}

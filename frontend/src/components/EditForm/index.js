@@ -31,8 +31,6 @@ export default function LaodingData() {
 
 export function EditHostForm({ sessionUser, spot }) {
   const dispatch = useDispatch();
-  console.log('this is session user',sessionUser.id)
-  console.log('this is sspot', spot);
 
   const [step, setStep] = useState(1);
   const [propertyType, setPropertyType] = useState(spot?.propertyType);

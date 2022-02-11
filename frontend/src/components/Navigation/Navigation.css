@@ -1,3 +1,124 @@
-ul {
+/* ul {
   position: fixed;
+} */
+
+.logoOuter {
+  max-height: 100px;
+  height: 100%;
+}
+
+.logoInner {
+  max-height: 100px;
+  height: 100%;
+}
+
+.navHeader {
+  height: 80px;
+  left: 0px;
+  top: 0px;
+  background: white;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(134 134 134);
+}
+
+.logo{
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  height: 100%;
+}
+
+.navLinkDiv {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: rgb(132, 192, 78);
+}
+
+.pageName {
+  font-size: 20px;
+  margin-top: 25px;
+}
+
+/* .navLinkH3 {
+  text-decoration: none;
+  color: #EF476F;
+  z-index: 2;
+} */
+
+.logoImg {
+  width: 65px;
+}
+
+.menuDetails {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.menuUserLogo {
+  width: 50px;
+  margin-top: 20px;
+}
+
+.fa-user-circle {
+font-size: 30px;
+}
+
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  font-family: sans-serif;
+}
+
+.profileLogout {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.profileLogout:hover {
+  text-decoration: underline;
+}
+
+.signButton {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.signUpDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 20px;
+}
+
+.loginDiv {
+display: flex;
+}
+
+.loginButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  height: 50%;
+  margin-top: 17px;
+  margin-right: 40px;
+}
+
+.loginButton:hover {
+  text-decoration: underline;
 }

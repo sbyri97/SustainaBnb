@@ -7,7 +7,14 @@ const { restoreUser } = require('../../utils/auth')
 const router = express.Router();
 
 
-//find all listings by userId
+//get a single spot
+router.get('/:spotId', asyncHandler(async (req, res) => {
+  const { spotId } = req.params
+
+  const singleSpot = await Spot.findByPk(spotId);
+
+  return res.json(singleSpot)
+}));
 
 // post to the form route
 router.post(
