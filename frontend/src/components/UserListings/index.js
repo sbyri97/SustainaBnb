@@ -26,19 +26,47 @@ export default function UserSpots() {
   // console.log('this', userSpotsArray.length);
   return (
     <div className="spots-cards">
-      <h1 className="pageTitle">Your Listings</h1>
+      <h3 className="pageTitle">Your Listings</h3>
       {isloading ? (
         <p className='loading'>Loading</p>
       ) : (
         <div>
           {userSpotsArray && userSpotsArray.length > 0 ? (
-            <div>
-              <div>
-                <ul className="row user-listing-card">
-                  {userSpotsArray.map((spot) => (
-                    <UserListings spot={spot} key={spot.id} />
-                  ))}
-                </ul>
+            <div className='mainUserSpots'>
+              <div className='mainTableDiv'>
+              <table className="mainTable">
+                <thead className='tableHead'>
+                  <tr className='tableHeadRow'>
+                    <th className='thListing'>
+                      Listing
+                    </th>
+                    <th className='thStatus'>
+                      Status
+                    </th>
+                    <th className='thBedrooms'>
+                      Bedrooms
+                    </th>
+                    <th className='thBeds'>
+                      Beds
+                    </th>
+                    <th className='thBaths'>
+                      Baths
+                    </th>
+                    <th className='thLocation'>
+                      Location
+                    </th>
+                    <th className='thEdit'>
+                      Modify
+                    </th>
+                    <th className='thDelete'>
+                      Remove
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className='tableBody'>
+                  {userSpotsArray.map((spot) => <tr className='tableBodyRow'><UserListings spot={spot} key={spot.id} /></tr>)}
+                </tbody>
+              </table>
               </div>
             </div>
           ) : (

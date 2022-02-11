@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 import PrivacyType from "./PrivacyType";
 import PropertyType from "./PropertyType";
 import Location from "./Location";
@@ -10,7 +10,7 @@ import Description from "./Description";
 import Price from "./Price";
 import Confirm from "./Confirm";
 import Success from "./Success";
-import "./HostForm.css";
+import "../HostForm/HostForm.css";
 import * as spotActions from "../../store/spot";
 import StepFooter from "./StepFooter";
 
@@ -54,7 +54,7 @@ export function EditHostForm({ sessionUser, spot }) {
 
   const questions = [
     "Host Your Sustainable Property in 9 Steps",
-    "What type of property is sustainable property?",
+    "What type of property is your sustainable property?",
     "What kind of space is your sustainable property?",
     "Where is it located?",
     "How many guests can your sustainable property hold?",
@@ -122,12 +122,12 @@ export function EditHostForm({ sessionUser, spot }) {
   const disabledStateOnStepper = [
     () => false, //0
     () => !propertyType,
+    () => !privacyType,
+    () => (!address || !state || !city || !country),
     () => false,
-    () => false,
-    () => false,
-    () => false,
-    () => false,
-    () => false,
+    () => !name,
+    () => !price,
+    () => !description,
     () => false,
     () => false,
   ];
@@ -135,7 +135,7 @@ export function EditHostForm({ sessionUser, spot }) {
   const getStepRightSide = () => {
     switch (step) {
       case 0:
-        return <h1 className="title">Click Next to get Started</h1>;
+        return <h1 className="maintitle">Click Next to get Started</h1>;
       case 1:
         return (
           <PropertyType
@@ -146,8 +146,8 @@ export function EditHostForm({ sessionUser, spot }) {
       case 2:
         return (
           <PrivacyType
-            privacyType={privacyType}
-            setPrivacyType={setPrivacyType}
+          privacyType={privacyType}
+          setPrivacyType={setPrivacyType}
           />
         );
       case 3:
@@ -157,6 +157,10 @@ export function EditHostForm({ sessionUser, spot }) {
             setCity={setCity}
             address={address}
             setAddress={setAddress}
+            state={state}
+            setState={setState}
+            country={country}
+            setCountry={setCountry}
           />
         );
       case 4:
@@ -182,6 +186,8 @@ export function EditHostForm({ sessionUser, spot }) {
         );
       case 9:
         return <Success />;
+      case 10:
+        return <Redirect to={`/api/users/${userId}/spots`} />
     }
   };
 
@@ -189,7 +195,7 @@ export function EditHostForm({ sessionUser, spot }) {
     return (
       <div className="firstPage-container">
         <div className="firstPage side">
-          <h1 className="title">{questions[step]}</h1>
+          <h1 className="qtitle">{questions[step]}</h1>
         </div>
         <div className="firstPage content">
           <div className="primary-content">{getStepRightSide()}</div>

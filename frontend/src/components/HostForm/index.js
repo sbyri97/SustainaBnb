@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Redirect, useParams } from "react-router-dom";
 
 import * as spotActions from "../../store/spot";
 import PrivacyType from "./PrivacyType";
@@ -41,10 +41,10 @@ export default function MainHostForm() {
 
   const questions = [
     "Host Your Sustainable Property in 9 Steps",
-    "What type of property is sustainable property?",
+    "What type of property is your sustainable property?",
     "What kind of space is your sustainable property?",
     "Where is it located?",
-    "How many guests can your sustainable property hold?",
+    "How many guests can your sustainable property welcome?",
     "Lets give your sustainable place a name",
     "What is the price your home deserves?",
     "Lets give your sustainable place a description",
@@ -110,12 +110,12 @@ export default function MainHostForm() {
   const disabledStateOnStepper = [
     () => false, //0
     () => !propertyType,
+    () => !privacyType,
+    () => (!address || !state || !city || !country),
     () => false,
-    () => false,
-    () => false,
-    () => false,
-    () => false,
-    () => false,
+    () => !name,
+    () => !price,
+    () => !description,
     () => false,
     () => false,
   ];
@@ -123,7 +123,7 @@ export default function MainHostForm() {
   const getStepRightSide = () => {
     switch (step) {
       case 0:
-        return <h1 className="title">Click Next to get Started</h1>;
+        return <h1 className="maintitle">Click Next to get Started</h1>;
       case 1:
         return (
           <PropertyType
@@ -145,6 +145,10 @@ export default function MainHostForm() {
             setCity={setCity}
             address={address}
             setAddress={setAddress}
+            state={state}
+            setState={setState}
+            country={country}
+            setCountry={setCountry}
           />
         );
       case 4:
@@ -170,6 +174,8 @@ export default function MainHostForm() {
         );
       case 9:
         return <Success />;
+      case 10:
+        return <Redirect to={`/api/users/${sessionUser.id}/spots`} />
     }
   };
 
@@ -177,7 +183,7 @@ export default function MainHostForm() {
     return (
       <div className="firstPage-container">
         <div className="firstPage side">
-          <h1 className="title">{questions[step]}</h1>
+          <h1 className="qtitle">{questions[step]}</h1>
         </div>
         <div className="firstPage content">
           <div className="primary-content">{getStepRightSide()}</div>

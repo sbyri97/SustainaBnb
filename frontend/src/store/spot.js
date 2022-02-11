@@ -78,7 +78,6 @@ export const deleteSpot = (spotId, userId) => async(dispatch) => {
 
     if(response.ok) {
         const spot = await response.json();
-        console.log(spot)
         dispatch(removeSpot(spot))
     }
 }

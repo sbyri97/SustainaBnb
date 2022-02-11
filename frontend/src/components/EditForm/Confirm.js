@@ -1,12 +1,8 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import * as spotActions from "../../store/spot";
+import { useSelector } from "react-redux";
 
 export default function Confirm({ states }) {
   const user = useSelector((state) => state.session.user.username);
-
-
   const {
     propertyType,
     privacyType,
@@ -24,36 +20,43 @@ export default function Confirm({ states }) {
   } = states;
 
   const propType = () => {
-    if (propertyType) {
+    if (propertyType === 'Apartment') {
       return "apartment";
     } else return "house";
   };
 
   const placeType = () => {
-    if (privacyType) {
+    if (privacyType === 'Entire Place') {
       return "Entire";
     } else return "Private";
   };
 
   return (
-    <div>
-      <h2>Confirm your property</h2>
-      <ul>
-        <li>Title: {name}</li>
-        <li>
-          {placeType()} {propType()} hosted by {user}
-        </li>
-        <li>Description: {description}</li>
-        <li>${price} per night</li>
-        <li>
-          {guestCount} guests || {bedroomCount} bedrooms || {bedCount} beds ||{" "}
-          {bathCount} bath
-        </li>
-        <li>
-          Location {address}, {city}
-        </li>
-      </ul>
-      <br />
+    <div className="outerMostBox">
+      <div className="outerBox">
+        <div className="innerBox">
+          <div className="confirmImg">
+            <img className="imgPrev"></img>
+          </div>
+          <h1 className="confirmTitle">{name}</h1>
+          <div className="confirmPropType">
+            {placeType()} {propType()} hosted by {user}
+          </div>
+          <div className="confirmDetail">
+            {guestCount} guests || {bedroomCount} bedrooms || {bedCount} beds ||{" "}
+            {bathCount} bath
+          </div>
+          <div className="confirmDescription">{description}</div>
+          <div className="confirmPrice">${price} per night</div>
+          <div className="confirmLocation">
+            <h2 className="locText"> Location</h2>
+            <div className="loc">
+              {address}, {city}, {state}, {country}
+            </div>
+          </div>
+          <br/>
+        </div>
+      </div>
     </div>
   );
 }
