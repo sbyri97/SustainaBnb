@@ -1,23 +1,113 @@
-/* * {
-    box-sizing: border-box;
-  } */
+.mainUserSpots {
+  position: relative;
+  width: fit-content;
+  min-width: 100%;
+}
 
-/* .column-spotDetails {
-    float: left;
-    width: 25%;
-    padding: 10px 10px;
-} */
+.mainTable {
+  display: inline-table;
+  width: calc(100% - 24px);
+  margin-left: 12px;
+  margin-right: 12px;
+  min-width: 100%;
+  text-indent: initial;
+  border-spacing: 2px;
+  border-color: grey;
+  border-collapse: collapse;
+}
 
-  /* .spotCard {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
-    /* padding: 16px;
-    text-align: center;
-    background-color: #f1f1f1; */
-  
+.tableHead {
 
-  /* .pageTitle {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  } */
+  vertical-align: middle;
+}
+
+.tableHeadRow {
+  display: table-row-group;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.thListing, .thStatus, .thBedrooms, .thBeds, .thBaths, .thLocation, .thEdit, .thDelete {
+  text-align: left;
+  font-size: 12px;
+  background: rgb(255, 255, 255);
+  color: rgb(113, 113, 113);
+  position: sticky;
+  white-space: nowrap;
+  padding: 16px 8px;
+  top: 0px;
+  line-height: 16px;
+}
+
+.thListing {
+  min-width: 290px;
+}
+
+.thEdit, .thDelete, .thLocation {
+  min-width: 200px;
+}
+
+.thStatus{
+  min-width: 180px
+}
+
+.thBedrooms {
+  min-width: 120px
+}
+
+.thBaths{
+  min-width: 115px;
+}
+
+.thBeds {
+  min-width: 95px
+}
+
+.tableBody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-collapse: collapse;
+}
+
+.tableBodyRow {
+  display: table-row;
+  border-top: 1px solid rgb(235, 235, 235);
+}
+
+.tableBodyRow:first-child {
+  border-top: none;
+}
+
+.tableBodyRow:last-child {
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.spotName {
+  min-width: 300px;
+  padding: 16px 8px;
+}
+
+.spotStatus, .editButtons, .deleteButtons {
+  min-width: 200px;
+  padding: 16px 8px;
+}
+
+.spotLocation {
+  min-width: 205px;
+  padding: 16px 8px;
+}
+
+.spotBedroom, .spotBed, .spotBath{
+  min-width: 100px;
+  padding: 16px 8px;
+}
+
+.actualEdit {
+  text-align: center;
+  cursor: pointer;
+  font-size: 12px;
+  outline: none;
+  border: none;
+  background: transparent;
+  color: rgb(35, 35, 35);
+  text-decoration: underline;
+}

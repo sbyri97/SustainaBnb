@@ -38,28 +38,28 @@ export default function UserSpots() {
                 <thead className='tableHead'>
                   <tr className='tableHeadRow'>
                     <th className='thListing'>
-                      Listing
+                      LISTING NAME
                     </th>
                     <th className='thStatus'>
-                      Status
+                      STATUS
                     </th>
                     <th className='thBedrooms'>
-                      Bedrooms
+                      BEDROOMS
                     </th>
                     <th className='thBeds'>
-                      Beds
+                      BEDS
                     </th>
                     <th className='thBaths'>
-                      Baths
+                      BATHS
                     </th>
                     <th className='thLocation'>
-                      Location
+                      LOCATION
                     </th>
                     <th className='thEdit'>
-                      Modify
+                      MODIFY
                     </th>
                     <th className='thDelete'>
-                      Remove
+                      REMOVE
                     </th>
                   </tr>
                 </thead>

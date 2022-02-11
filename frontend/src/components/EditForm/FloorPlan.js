@@ -105,7 +105,8 @@ export default function FloorPlan({ nextStep, prevStep, states }) {
               className="count-btns"
               onClick={() => {
                 if (bathCount < 30) {
-                  setBathCount((bathCount) => bathCount + 0.5);
+                  const dec = parseInt(bathCount)
+                  setBathCount((dec) => dec + 0.5);
                 }
               }}
             >
