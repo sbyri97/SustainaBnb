@@ -27,6 +27,8 @@ export default function MainHostForm() {
   const [state, setState] = useState();
   const [country, setCountry] = useState();
 
+  const [image, setImage] = useState("")
+
   const [guestCount, setGuestCount] = useState(1);
   const [bedCount, setBedCount] = useState(1);
   const [bedroomCount, setBedroomCount] = useState(1);
@@ -46,6 +48,7 @@ if (sessionUser) {
     "What type of property is your sustainable property?",
     "What kind of space is your sustainable property?",
     "Where is it located?",
+    "Please add an image of your beautiful peoperty",
     "How many guests can your sustainable property welcome?",
     "Lets give your sustainable place a name",
     "What is the price your home deserves?",
@@ -54,7 +57,7 @@ if (sessionUser) {
   ];
 
   const nextStep = () => {
-    if (step === 8) {
+    if (step === 9) {
       const spot = {
         propertyType,
         privacyType,
@@ -71,6 +74,12 @@ if (sessionUser) {
         description,
         userId,
       };
+
+      const img = {
+        image,
+      }
+
+      //dispatch(imageActions.newImage(image))
       dispatch(spotActions.newSpot(spot));
     }
     setStep((step) => step + 1);

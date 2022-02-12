@@ -32,6 +32,10 @@ export const deleteReview = (reviewId) => async(dispatch) => {
             reviewId
         })
     })
+
+    const deleteRev = await response.json()
+    dispatch(removeReviews(deleteRev))
+    return response;
 }
 
 
