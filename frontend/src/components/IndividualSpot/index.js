@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spot';
+import * as reviewActions from '../../store/review'
 import { Link, NavLink, useParams} from 'react-router-dom'
 import './IndividualSpot.css'
+import Reviews from '../Reviews';
 
 
 function IndividualSpot() {
@@ -10,14 +12,23 @@ function IndividualSpot() {
     const spot = useSelector((state) => state.spot.spot[spotId]);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
+    const [review, setReview] = useState("")
+    const allReviews = useSelector((state) => state.review.review)
+    const reviewsArr = Object.values(allReviews)
 
   useEffect(() => {
       dispatch(spotActions.indivSpot(spotId));
       setTimeout(() => {
-        setLoading(false);
-      }, 200)
-  }, [dispatch]);
+          setLoading(false);
+        }, 200)
+    }, [dispatch]);
 
+    useEffect(() => {
+        dispatch(reviewActions.receiveReviews(spotId))
+        setTimeout(() => {
+            setLoading(false);
+          }, 200)
+      }, [dispatch]);
   const propType = () => {
     if (spot?.propertyType === 'Apartment') {
       return "apartment";
@@ -71,7 +82,9 @@ function IndividualSpot() {
                                 </div>
                             </div>
                         </div>
-                        <div className="spotReviewBox"></div>
+                        <div className="spotReviewBox">
+                            <Reviews review={review} setReview={setReview} spotId={spotId} spotUserId={spot.userId} reviewsArr={reviewsArr}/>
+                        </div>
                     </div>
                 ) : (
                     <h2 className='noSpot'>Lisitng Doesn't exist</h2>

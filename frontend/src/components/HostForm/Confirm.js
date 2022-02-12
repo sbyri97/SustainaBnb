@@ -43,8 +43,9 @@ export default function Confirm({ states }) {
             {placeType()} {propType()} hosted by {user}
           </div>
           <div className="confirmDetail">
-            {guestCount} guests || {bedroomCount} bedrooms || {bedCount} beds ||{" "}
-            {bathCount} bath
+            {guestCount < 2 ? '1 guest' : ` ${guestCount} guests`} {"\u00b7"}{" "}{bedroomCount < 2 ? '1 bedroom' : ` ${bedroomCount} bedrooms`} {"\u00b7"}{" "}
+            {bedCount < 2 ? '1 bed' : ` ${bedCount} beds`} {"\u00b7"}{" "}
+            {bathCount < 1 ? '0.5 bath' : ` ${bathCount} baths`}
           </div>
           <div className="confirmDescription">{description}</div>
           <div className="confirmPrice">${price} per night</div>

@@ -17,6 +17,7 @@ router.use('/spot', spotRouter)
 
 router.use('/listings', listingsRouter)
 
+
 module.exports = router;
 
 
