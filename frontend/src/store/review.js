@@ -77,6 +77,11 @@ export default function reviewReducer(state = initialState, action) {
                 ...state,
                 ...newState
             }
+        case REMOVE_REVIEWS: {
+            newState = {...state, review: {...state.review}};
+            delete newState.review[action.reviewId]
+            return newState;
+        }
         default:
             return state;
     }

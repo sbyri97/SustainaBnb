@@ -6,6 +6,17 @@ const { restoreUser } = require('../../utils/auth')
 
 const router = express.Router();
 
+router.delete('/review/delete', asyncHandler(async (req, res) => {
+  const { reviewId } = req.body
+
+  const review = await Review.findByPk(reviewId)
+
+  const delReview = await review.destroy()
+  return res.json(review.id)
+}));
+
+
+
 router.get('/:spotId(\\d+)/review', asyncHandler(async (req, res) => {
   const { spotId } = req.params
 

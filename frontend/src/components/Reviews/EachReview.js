@@ -1,14 +1,18 @@
 import React from "react"
+import { useDispatch } from "react-redux";
 import './Review.css'
+import *  as reviewActions from '../../store/review'
 
 
 function EachReview({indivReview, sessionUser}) {
     const date = new Date(indivReview.createdAt)
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.getFullYear()
+    const dispatch = useDispatch()
 
-    const onDelete = () => {
-        
+    const onDelete = (e) => {
+        e.preventDefault()
+        dispatch(reviewActions.deleteReview(indivReview.id))
     }
     return (
         <div className="reviewBody">
@@ -25,7 +29,8 @@ function EachReview({indivReview, sessionUser}) {
             {sessionUser.id === indivReview.userId ?
             (
             <div className="revDelBtn">
-                <button className="usrDelBtn">Delete</button>
+                <button className="usrDelBtn"
+                onClick={onDelete}>Delete</button>
             </div>
             ) : null}
         </div>
