@@ -2,6 +2,7 @@ import { csrfFetch } from "./csrf";
 
 const SUBMIT_REVIEW = 'review/SUBMITREVIEW'
 const GET_REVIEWS = 'review/GETREVIEWS'
+const REMOVE_REVIEWS = 'review/REMOVEREVIEWS'
 
 const submitReview = (reviewData) => {
     return {
@@ -15,6 +16,22 @@ const getReviews = (reviews) => {
         type: GET_REVIEWS,
         reviews
     }
+}
+
+const removeReviews = (reviewId) => {
+    return {
+        type: REMOVE_REVIEWS,
+        reviewId
+    }
+}
+
+export const deleteReview = (reviewId) => async(dispatch) => {
+    const response = await csrfFetch(`/api/spot/review/delete`, {
+        method: 'DELETE',
+        body: JSON.stringify({
+            reviewId
+        })
+    })
 }
 
 

@@ -1,0 +1,124 @@
+/* .reviewInnerBox {
+    display: flex;
+    justify-content: space-between;
+} */
+
+.reviewOuterBox {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reviewInnerBox {
+    min-width: 73%
+}
+
+.reviewHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.reviewStarImg {
+    width: 16px;
+}
+
+.reviewHead {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.reviewBody{
+    padding-left: 4px;
+    padding-right: 4px;
+    margin-bottom: 40px;
+}
+
+.revUserDate {
+    margin-bottom: 12px;
+    margin-left: 12px;
+    font-size: 16px;
+}
+
+.revWUser {
+    display: flex;
+}
+
+.revUserLogo {
+    margin-top: 3px;
+}
+
+.reviewDate {
+    font-size: 14px;
+    font-weight: lighter;
+    color: rgb(71, 71, 71)
+}
+
+.reviewItself {
+    font-size: 16px;
+    color: #222222;
+    font-weight: 350
+}
+
+.postReviewOuterBox {
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 40px 40px 80px;
+    width: 200px;
+    height: 50px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    position: sticky;
+}
+
+.postReviewInnerBox{
+    display: flex;
+    flex-direction: column;
+    /* height: inherit; */
+    height: 100px;
+}
+
+.formReviewBox {
+    height: 100px;
+    border-radius: 12px;
+    overflow-y: scroll;
+    margin-bottom: 15px;
+    border: 1px solid rgb(71, 71, 71)
+}
+
+.submitReviewBtn {
+    background: transparent;
+    border-radius: 12px;
+    border: 1px solid rgb(71, 71, 71)
+
+}
+
+.postReviewOpenBtn{
+    background: transparent;
+    border-radius: 12px;
+    border: 1px solid rgb(71, 71, 71);
+    justify-content: center;
+    position: sticky;
+    padding-left: 10px;
+    cursor: pointer;
+
+}
+
+.revBtnDiv {
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    cursor: pointer;
+
+}
+
+.revDelBtn {
+    margin-top: 5px;
+}
+
+.usrDelBtn {
+    background: transparent;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0px;
+
+}

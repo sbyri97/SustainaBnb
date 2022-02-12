@@ -4,6 +4,7 @@ import * as spotActions from '../../store/spot';
 import * as reviewActions from '../../store/review'
 import { Link, NavLink, useParams} from 'react-router-dom'
 import './IndividualSpot.css'
+import '../Reviews/Review.css'
 import Reviews from '../Reviews';
 
 
@@ -63,7 +64,7 @@ function IndividualSpot() {
                                     <div className='spotDetails-offer'>This details of this place</div>
                                     <div className='spotDetails-guest'>
                                         <i className="fas fa-user" />
-                                        {spot?.guestCount < 2 ? ` 1 Guest` : `  ${spot?.guestCount} Guests`}
+                                        {spot?.guestCount < 2 ? ` ${" "}1 Guest` : `  ${spot?.guestCount} Guests`}
                                         </div>
                                     <div className='spotDetails-guest'>
                                         <i className="fas fa-bed" />

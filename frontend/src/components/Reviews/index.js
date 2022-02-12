@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import reviewStar from "../../images/reviewStar.png"
 import EachReview from "./EachReview"
 import * as reviewActions from "../../store/review"
+import './Review.css'
 
 function Reviews({review, setReview, spotId, spotUserId, reviewsArr}) {
     const sessionUser = useSelector((state) => state.session.user);
@@ -23,19 +24,25 @@ function Reviews({review, setReview, spotId, spotUserId, reviewsArr}) {
         <div className="reviewOuterBox">
             <div className="reviewInnerBox">
                 <div className="reviewHeader">
-                    <img className="reviewStarImg"
-                    src={reviewStar}></img>
-                    <h1 className="reviewhead">{reviewsArr.length} Reviews</h1>
+                    <div className="revImgDiv">
+                        <img className="reviewStarImg"
+                        src={reviewStar} />
+                    </div>
+                    <div className="revHeadNameDiv">
+                        <h1 className="reviewHead">{reviewsArr.length} reviews</h1>
+                    </div>
                 </div>
                 <div className="reviewBodyBox">
                     {reviewsArr.map((indivReview) =>
-                    <EachReview indivReview={indivReview} key={indivReview.id}/>
+                    <EachReview indivReview={indivReview} key={indivReview.id} sessionUser={sessionUser}/>
                     )}
                 </div>
             </div>
             {sessionUser.id !== spotUserId ? (
                 <div className="postReviewOuterMostBox">
-                    <button className="postReviewOpenBtn" onClick={onClick}>Post A Review</button>
+                    <div className="revBtnDiv">
+                        <button className="postReviewOpenBtn" onClick={onClick}>Post A Review</button>
+                    </div>
                     {showReviewBox ?
                     <ReviewBox
                     review={review}
@@ -63,7 +70,7 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
 
     useEffect(() => {
         dispatch(reviewActions.receiveReviews(spotId))
-    }, [forceUpdate])
+    }, [dispatch, forceUpdate])
     return (
         <div className="postReviewOuterBox">
             <div className="postReviewInnerBox">
