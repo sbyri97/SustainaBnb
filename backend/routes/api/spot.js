@@ -13,7 +13,12 @@ router.get('/:spotId', asyncHandler(async (req, res) => {
 
   const singleSpot = await Spot.findByPk(spotId);
 
-  return res.json(singleSpot)
+  if(singleSpot) {
+    return res.json(singleSpot)
+  } else {
+    return res.json({"message": "Spot Not Found"})
+  }
+
 }));
 
 // post to the form route

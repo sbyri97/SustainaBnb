@@ -46,10 +46,8 @@ const getSingleSpot = (singleSpot) => {
 export const indivSpot = (spotId) => async(dispatch) => {
     const response = await fetch(`/api/spot/${spotId}`);
 
-    if(response.ok) {
         const singleSpot = await response.json()
         dispatch(getSingleSpot(singleSpot))
-    }
 }
 
 
