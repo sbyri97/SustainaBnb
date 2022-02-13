@@ -6,6 +6,7 @@ import * as spotActions from "../../store/spot";
 import PrivacyType from "./PrivacyType";
 import PropertyType from "./PropertyType";
 import Location from "./Location";
+import Image from "./Image";
 import FloorPlan from "./FloorPlan";
 import Name from "./Name";
 import Description from "./Description";
@@ -27,7 +28,7 @@ export default function MainHostForm() {
   const [state, setState] = useState();
   const [country, setCountry] = useState();
 
-  const [image, setImage] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
 
   const [guestCount, setGuestCount] = useState(1);
   const [bedCount, setBedCount] = useState(1);
@@ -44,7 +45,7 @@ if (sessionUser) {
   const userId = sessionUser.id;
 
   const questions = [
-    "Host Your Sustainable Property in 9 Steps",
+    "Host Your Sustainable Property in 10 Steps",
     "What type of property is your sustainable property?",
     "What kind of space is your sustainable property?",
     "Where is it located?",
@@ -65,6 +66,7 @@ if (sessionUser) {
         city,
         state,
         country,
+        imageUrl,
         guestCount,
         bedCount,
         bedroomCount,
@@ -75,11 +77,6 @@ if (sessionUser) {
         userId,
       };
 
-      const img = {
-        image,
-      }
-
-      //dispatch(imageActions.newImage(image))
       dispatch(spotActions.newSpot(spot));
     }
     setStep((step) => step + 1);
@@ -102,6 +99,8 @@ if (sessionUser) {
     setState,
     country,
     setCountry,
+    imageUrl,
+    setImageUrl,
     guestCount,
     setGuestCount,
     bedCount,
@@ -123,6 +122,7 @@ if (sessionUser) {
     () => !propertyType,
     () => !privacyType,
     () => (!address || !state || !city || !country),
+    () => !imageUrl,
     () => false,
     () => !name,
     () => !price,
@@ -162,30 +162,37 @@ if (sessionUser) {
             setCountry={setCountry}
           />
         );
-        case 4:
+      case 4:
+        return (
+          <Image
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
+          />
+        )
+      case 5:
         return (
           <FloorPlan nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 5:
-        return <Name name={name} setName={setName} />;
       case 6:
+        return <Name name={name} setName={setName} />;
+      case 7:
         return (
           <Price nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 7:
+      case 8:
         return (
           <Description
             description={description}
             setDescription={setDescription}
           />
         );
-      case 8:
+      case 9:
         return (
           <Confirm nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 9:
-        return <Success />;
       case 10:
+        return <Success />;
+      case 11:
         return <Redirect to={`/api/users/${sessionUser.id}/spots`} />
     }
   };
@@ -197,7 +204,7 @@ if (sessionUser) {
         </div>
         <div className="firstPage content">
           <div className="primary-content">{getStepRightSide()}</div>
-          {step !== 10 && (
+          {step !== 11 && (
             <StepFooter
               disabledStateOnStepper={disabledStateOnStepper[step]}
               nextStep={nextStep}

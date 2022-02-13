@@ -17,15 +17,21 @@ module.exports = (sequelize, DataTypes) => {
       },
       state: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       country: {
         type: DataTypes.STRING,
+        allowNull: false,
       },
       lat: {
         type: DataTypes.DECIMAL,
       },
       lng: {
         type: DataTypes.DECIMAL,
+      },
+      imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: false
       },
       guestCount: {
         type: DataTypes.INTEGER,
@@ -83,12 +89,12 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Spot.submit = async function ({
-    address, city, state, country, guestCount,
+    address, city, state, country, imageUrl, guestCount,
     bedCount, bedroomCount, bathCount, name, price, description,
     propertyType, privacyType, userId
   }) {
     const spot = await Spot.create({
-    address, city, state, country, guestCount,
+    address, city, state, country, imageUrl, guestCount,
     bedCount, bedroomCount, bathCount, name, price, description,
     propertyType, privacyType, userId
     });

@@ -61,11 +61,20 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
     const dispatch = useDispatch()
     const userId = sessionUser.id
     const [forceUpdate, setForceUpdate] = useState(false)
+    const [errors, setErrors] = useState([]);
+
     const submitRev = (e) => {
         e.preventDefault()
-        dispatch(reviewActions.newSubmitReview(userId, spotId, review))
-        setReview("")
-        setForceUpdate(!forceUpdate)
+        setErrors([])
+        return dispatch(reviewActions.newSubmitReview(userId, spotId, review))
+        .catch(async (res) => {
+            const data = await res.json();
+            if(data && data.errors) setErrors(data.errors)
+            else {
+                setReview("")
+                setForceUpdate(!forceUpdate)
+            }
+            });
     }
 
     useEffect(() => {
@@ -78,9 +87,17 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
                 className="formReviewBox"
                 type="textarea"
                 value={review}
+                required
                 onChange={(e) => {
                 setReview(e.target.value)}} />
                 <button className="submitReviewBtn" onClick={submitRev}>Submit Review</button>
+                <ul>
+                </ul>
+            </div>
+            <div className="errorDiv">
+                {errors.map((error, errorId) => (
+                <li key={errorId}>{error}</li>
+                ))}
             </div>
         </div>
     )

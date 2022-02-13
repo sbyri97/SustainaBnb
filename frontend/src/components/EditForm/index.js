@@ -4,6 +4,7 @@ import { useParams, Redirect } from "react-router-dom";
 import PrivacyType from "./PrivacyType";
 import PropertyType from "./PropertyType";
 import Location from "./Location";
+import Image from "./Image";
 import FloorPlan from "./FloorPlan";
 import Name from "./Name";
 import Description from "./Description";
@@ -39,6 +40,7 @@ export function EditHostForm({ sessionUser, spot }) {
   const [city, setCity] = useState(spot?.city);
   const [state, setState] = useState(spot?.state);
   const [country, setCountry] = useState(spot?.country);
+  const [imageUrl, setImageUrl] =useState(spot?.imageUrl)
   const [guestCount, setGuestCount] = useState(spot?.guestCount);
   const [bedCount, setBedCount] = useState(spot?.bedCount);
   const [bedroomCount, setBedroomCount] = useState(spot?.bedroomCount);
@@ -51,19 +53,21 @@ export function EditHostForm({ sessionUser, spot }) {
 
 
   const questions = [
-    "Host Your Sustainable Property in 9 Steps",
+    "Host Your Sustainable Property in 10 Steps",
     "What type of property is your sustainable property?",
     "What kind of space is your sustainable property?",
     "Where is it located?",
-    "How many guests can your sustainable property hold?",
+    "Please add an image of your beautiful peoperty",
+    "How many guests can your sustainable property welcome?",
     "Lets give your sustainable place a name",
     "What is the price your home deserves?",
     "Lets give your sustainable place a description",
     "Please confirm your property",
   ];
 
+
   const nextStep = () => {
-    if (step === 8) {
+    if (step === 9) {
       const spot = {
         propertyType,
         privacyType,
@@ -71,6 +75,7 @@ export function EditHostForm({ sessionUser, spot }) {
         city,
         state,
         country,
+        imageUrl,
         guestCount,
         bedCount,
         bedroomCount,
@@ -101,6 +106,8 @@ export function EditHostForm({ sessionUser, spot }) {
     setState,
     country,
     setCountry,
+    imageUrl,
+    setImageUrl,
     guestCount,
     setGuestCount,
     bedCount,
@@ -122,6 +129,7 @@ export function EditHostForm({ sessionUser, spot }) {
     () => !propertyType,
     () => !privacyType,
     () => (!address || !state || !city || !country),
+    () => !imageUrl,
     () => false,
     () => !name,
     () => !price,
@@ -163,29 +171,36 @@ export function EditHostForm({ sessionUser, spot }) {
         );
       case 4:
         return (
+          <Image
+          imageUrl={imageUrl}
+          setImageUrl={setImageUrl}
+          />
+        )
+      case 5:
+        return (
           <FloorPlan nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 5:
-        return <Name name={name} setName={setName} />;
       case 6:
+        return <Name name={name} setName={setName} />;
+      case 7:
         return (
           <Price nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 7:
+      case 8:
         return (
           <Description
             description={description}
             setDescription={setDescription}
           />
         );
-      case 8:
+      case 9:
         return (
           <Confirm nextStep={nextStep} prevStep={prevStep} states={states} />
         );
-      case 9:
-        return <Success />;
       case 10:
-        return <Redirect to={`/api/users/${userId}/spots`} />
+        return <Success />;
+      case 11:
+        return <Redirect to={`/api/users/${sessionUser.id}/spots`} />
     }
   };
 
@@ -197,7 +212,7 @@ export function EditHostForm({ sessionUser, spot }) {
         </div>
         <div className="firstPage content">
           <div className="primary-content">{getStepRightSide()}</div>
-          {step !== 10 && (
+          {step !== 11 && (
             <StepFooter
               disabledStateOnStepper={disabledStateOnStepper[step]}
               nextStep={nextStep}

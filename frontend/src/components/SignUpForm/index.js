@@ -32,51 +32,61 @@ function SignUpForm () {
         }
         return setErrors(['Both passwords must match'])
     }
+
+    const demoClick = (e) => {
+        e.preventDefault();
+        dispatch(sessionActions.login({credential: 'Demo-lition', password: 'password'}))
+    }
     return (
-        <form onSubmit={handleSubmit}>
-            <ul>
-                {errors.map((error, errorId) =>
-                    <li key={errorId}>{error}</li>
-                )}
-            </ul>
-            <label>
-                Username
-                <input
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Email
-                <input
-                    type="text"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Password
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <label>
-                Confirm Password
-                <input
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfrimPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type='submit'>Sign Up</button>
-        </form>
+        <div className='signUpPageBox'>
+            <form onSubmit={handleSubmit} className='signupbox'>
+                <ul>
+                    {errors.map((error, errorId) =>
+                        <li key={errorId}>{error}</li>
+                    )}
+                </ul>
+                <label>
+                    Username
+                    <input
+                        type="text"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Email
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Password
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <label>
+                    Confirm Password
+                    <input
+                        type="password"
+                        value={confirmPassword}
+                        onChange={(e) => setConfrimPassword(e.target.value)}
+                        required
+                    />
+                </label>
+                <button type='submit'>Sign Up</button>
+            </form>
+            <div className='demoUserBox'>
+                <button className='demoUserBtn' onClick={demoClick}>Demo User</button>
+            </div>
+        </div>
     )
 }
 

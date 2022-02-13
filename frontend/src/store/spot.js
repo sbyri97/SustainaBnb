@@ -54,7 +54,7 @@ export const indivSpot = (spotId) => async(dispatch) => {
 export const newSpot = (spot) => async(dispatch) => {
 
     const {
-        address, city, state, country, guestCount,
+        address, city, state, country, imageUrl, guestCount,
         bedCount, bedroomCount, bathCount, name, price, description,
         propertyType, privacyType, userId
     } = spot;
@@ -62,7 +62,7 @@ export const newSpot = (spot) => async(dispatch) => {
     const response = await csrfFetch('/api/spot', {
         method: 'POST',
         body: JSON.stringify({
-            address, city, state, country, guestCount,
+            address, city, state, country, imageUrl, guestCount,
             bedCount, bedroomCount, bathCount, name, price, description,
             propertyType, privacyType, userId
         })
@@ -98,7 +98,7 @@ export const deleteSpot = (spotId, userId) => async(dispatch) => {
 
 export const updateSpot = (spot, userId, spotId) => async(dispatch) => {
     const {
-        address, city, state, country, guestCount,
+        address, city, state, country, imageUrl, guestCount,
         bedCount, bedroomCount, bathCount, name, price, description,
         propertyType, privacyType
     } = spot;
@@ -109,7 +109,7 @@ export const updateSpot = (spot, userId, spotId) => async(dispatch) => {
             'Content-Type' : 'application/json'
         },
         body: JSON.stringify({
-            address, city, state, country, guestCount,
+            address, city, state, country, imageUrl, guestCount,
             bedCount, bedroomCount, bathCount, name, price, description,
             propertyType, privacyType
         })

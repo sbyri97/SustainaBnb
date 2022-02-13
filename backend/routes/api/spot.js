@@ -3,8 +3,18 @@ const asyncHandler = require('express-async-handler');
 
 const { Spot, Review, User } = require('../../db/models');
 const { restoreUser } = require('../../utils/auth')
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+
 
 const router = express.Router();
+
+const validateReview = [
+  check('review')
+    .exists({checkFalsy: true})
+    .withMessage('Must enter a review.'),
+  handleValidationErrors
+]
 
 router.delete('/review/delete', asyncHandler(async (req, res) => {
   const { reviewId } = req.body
@@ -35,7 +45,9 @@ router.get('/:spotId(\\d+)/review', asyncHandler(async (req, res) => {
 router.get('/:spotId(\\d+)', asyncHandler(async (req, res) => {
   const { spotId } = req.params
 
-  const singleSpot = await Spot.findByPk(spotId);
+  const singleSpot = await Spot.findByPk(spotId, {
+    include: User
+  });
 
   if(singleSpot) {
     return res.json(singleSpot)
@@ -45,24 +57,24 @@ router.get('/:spotId(\\d+)', asyncHandler(async (req, res) => {
 
 }));
 
-router.post('/:spotId(\\d+)/review', asyncHandler(async (req, res) => {
+router.post('/:spotId(\\d+)/review', validateReview, asyncHandler(async (req, res) => {
   // return await Spot.findByPk(spot.id)
   const {userId, spotId, review} = req.body;
 
   const newReview = await Review.create({userId, spotId, review})
 
-  return await Review.findByPk(newReview.id)
+  return await Review.findByPk(newReview)
 
 }));
 // post to the form route
 router.post(
   '/',
   asyncHandler(async (req, res) => {
-    const { address, city, state, country, guestCount,
+    const { address, city, state, country, imageUrl, guestCount,
       bedCount, bedroomCount, bathCount, name, price, description,
       propertyType, privacyType, userId } = req.body;
 
-    const spot = await Spot.submit({ address, city, state, country, guestCount,
+    const spot = await Spot.submit({ address, city, state, country, imageUrl, guestCount,
       bedCount, bedroomCount, bathCount, name, price, description,
       propertyType, privacyType, userId });
 

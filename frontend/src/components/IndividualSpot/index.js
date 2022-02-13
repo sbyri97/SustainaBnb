@@ -13,7 +13,7 @@ function IndividualSpot() {
     const spot = useSelector((state) => state.spot.spot[spotId]);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-    const [review, setReview] = useState("")
+    const [review, setReview] = useState()
     const allReviews = useSelector((state) => state.review.review)
     const reviewsArr = Object.values(allReviews)
 
@@ -55,10 +55,13 @@ function IndividualSpot() {
                             <div className="spotLoc">{spot?.city}, {spot?.state}, {spot?.country}</div>
                         </div>
                         <div className="spotImgBox">
+                            <div className='ImgInnerDiv'>
+                                <img className='spotImg' src={spot?.imageUrl} />
+                            </div>
                         </div>
                         <div className="spotInfoBox">
                             <div className="spotDetailsBox">
-                                <div className="spotDetails-property">{placeType()} {propType()} hosted by User</div>
+                                <div className="spotDetails-property">{placeType()} {propType()} hosted by {spot.User.username}</div>
                                 <div className="spotDetails-description">{spot?.description}</div>
                                 <div className="spotDetails-placeinfo">
                                     <div className='spotDetails-offer'>This details of this place</div>

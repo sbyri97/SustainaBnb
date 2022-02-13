@@ -8,7 +8,7 @@ export default function Image({ imageUrl, setImageUrl }) {
         <textarea
         className="formTextBox"
         type="textarea"
-        placeholder="www.imageurlgoeshere.com/niceimage.jpg (Note: Must be a jpg, jpeg, png format)"
+        placeholder="www.imageurlgoeshere.com/niceimage"
         value={imageUrl}
         onChange={(e) => {
             setImageUrl(e.target.value)}} />

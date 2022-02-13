@@ -23,9 +23,11 @@ module.exports = {
         type: Sequelize.STRING
       },
       state: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       country: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       lat: {
@@ -33,6 +35,10 @@ module.exports = {
       },
       lng: {
         type: Sequelize.DECIMAL
+      },
+      imageUrl :{
+        type: Sequelize.STRING,
+        allowNull: false
       },
       guestCount: {
         allowNull: false,

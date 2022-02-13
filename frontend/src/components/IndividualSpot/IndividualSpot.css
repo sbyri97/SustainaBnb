@@ -43,6 +43,7 @@
     height: 50px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     position: sticky;
+    margin-top: 48px;
 }
 
 .spotPrice {
@@ -77,4 +78,10 @@
 
 .spotDetails-guest {
     padding: 0px 0px 16px;
+}
+
+.spotImg{
+    max-width: 100%;
+    border-radius: 12px;
+    padding-bottom: px;
 }

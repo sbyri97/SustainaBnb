@@ -42,7 +42,7 @@ router.get('/:userId(\\d+)/spots', restoreUser, asyncHandler(async (req, res) =>
 router.put(`/:userId(\\d+)/spot/edit/:spotId`, asyncHandler(async(req, res) => {
   const { userId, spotId } = req.params
   const {
-    address, city, state, country, guestCount,
+    address, city, state, country, imageUrl, guestCount,
     bedCount, bedroomCount, bathCount, name, price, description,
     propertyType, privacyType
   } = req.body;
@@ -54,7 +54,7 @@ router.put(`/:userId(\\d+)/spot/edit/:spotId`, asyncHandler(async(req, res) => {
   })
 
 const newEditedSpot = await editSpot.update({
-  address, city, state, country, guestCount,
+  address, city, state, country, imageUrl, guestCount,
   bedCount, bedroomCount, bathCount, name, price, description,
   propertyType, privacyType
 })

@@ -9,7 +9,7 @@ export default function StepFooter({
       <div className="button-holder">
         <button
             className="back-button"
-            disabled={step === 9}
+            disabled={step === 10}
             style={{ visibility: step !== 0 ? "visible" : "hidden" }}
             type="button"
             onClick={prevStep}
