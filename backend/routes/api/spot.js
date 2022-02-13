@@ -41,6 +41,16 @@ router.get('/:spotId(\\d+)/review', asyncHandler(async (req, res) => {
   return res.json(reviews)
 }))
 
+router.post('/:spotId(\\d+)/review', asyncHandler(async (req, res) => {
+  // return await Spot.findByPk(spot.id)
+  const {userId, spotId, review} = req.body;
+
+  const newReview = await Review.create({userId, spotId, review})
+
+  const awaited = await Review.findByPk(newReview.id)
+
+}));
+
 //get a single spot
 router.get('/:spotId(\\d+)', asyncHandler(async (req, res) => {
   const { spotId } = req.params
@@ -57,15 +67,6 @@ router.get('/:spotId(\\d+)', asyncHandler(async (req, res) => {
 
 }));
 
-router.post('/:spotId(\\d+)/review', validateReview, asyncHandler(async (req, res) => {
-  // return await Spot.findByPk(spot.id)
-  const {userId, spotId, review} = req.body;
-
-  const newReview = await Review.create({userId, spotId, review})
-
-  return await Review.findByPk(newReview)
-
-}));
 // post to the form route
 router.post(
   '/',
@@ -84,6 +85,13 @@ router.post(
     //unsuccessful users will be passed onto the sequelize validation error to next-error-handler
   })
 );
+
+router.get('/', asyncHandler(async (req, res) => {
+
+  const allSpots = await Spot.findAll({include: Review});
+
+  return res.json(allSpots)
+}))
 
 
 

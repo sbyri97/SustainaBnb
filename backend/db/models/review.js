@@ -18,5 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     Review.belongsTo(models.User, { foreignKey: 'userId', onDelete: 'cascade' })
     Review.belongsTo(models.Spot, { foreignKey: 'spotId', onDelete: 'cascade' })
   };
+
+ Review.submit = async function ({
+    userId, spotId, review
+  }) {
+    const retreview = await Review.create({
+      userId, spotId, review
+    });
+    return await Review.findByPk(retreview.id)
+  };
   return Review;
 };

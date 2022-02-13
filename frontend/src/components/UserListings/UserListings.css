@@ -5,7 +5,7 @@
 }
 
 .mainTable {
-  display: inline-table;
+  display: table;
   width: calc(100% - 24px);
   margin-left: 12px;
   margin-right: 12px;
@@ -22,12 +22,12 @@
 }
 
 .tableHeadRow {
-  display: table-row-group;
+  /* display: table-row-group; */
   border-bottom: 1px solid rgb(235, 235, 235);
 }
 
-.thListing, .thStatus, .thBedrooms, .thBeds, .thBaths, .thLocation, .thEdit, .thDelete {
-  text-align: left;
+.thStatus, .thBedrooms, .thBeds, .thBaths, .thLocation, .thEdit, .thDelete {
+  text-align: center;
   font-size: 12px;
   background: rgb(255, 255, 255);
   color: rgb(113, 113, 113);
@@ -39,7 +39,16 @@
 }
 
 .thListing {
-  min-width: 290px;
+  min-width: 250px;
+  text-align: left;
+  font-size: 12px;
+  background: rgb(255, 255, 255);
+  color: rgb(113, 113, 113);
+  position: sticky;
+  white-space: nowrap;
+  padding: 16px 8px;
+  top: 0px;
+  line-height: 16px;
 }
 
 .thEdit, .thDelete, .thLocation {
@@ -63,7 +72,7 @@
 }
 
 .tableBody {
-  display: table-row-group;
+  /* display: table-row-group; */
   vertical-align: middle;
   border-collapse: collapse;
 }
@@ -82,23 +91,30 @@
 }
 
 .spotName {
-  min-width: 300px;
+  min-width: 3px;
   padding: 16px 8px;
+  text-align: left;
+
 }
 
 .spotStatus, .editButtons, .deleteButtons {
   min-width: 200px;
   padding: 16px 8px;
+  text-align: center;
+
 }
 
 .spotLocation {
   min-width: 205px;
   padding: 16px 8px;
+  text-align: center;
+
 }
 
 .spotBedroom, .spotBed, .spotBath{
   min-width: 100px;
   padding: 16px 8px;
+  text-align: center;
 }
 
 .actualEdit {

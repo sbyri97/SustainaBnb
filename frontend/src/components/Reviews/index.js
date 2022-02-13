@@ -12,7 +12,7 @@ function Reviews({review, setReview, spotId, spotUserId, reviewsArr}) {
         e.preventDefault()
         setShowReviewBox(!showReviewBox)
     }
-
+    console.log('this is indiv', reviewsArr);
     const date = new Date(reviewsArr.createdAt)
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.getFullYear()
@@ -34,6 +34,7 @@ function Reviews({review, setReview, spotId, spotUserId, reviewsArr}) {
                 </div>
                 <div className="reviewBodyBox">
                     {reviewsArr.map((indivReview) =>
+                        // console.log('this be in', indivReview)
                     <EachReview indivReview={indivReview} key={indivReview.id} sessionUser={sessionUser}/>
                     )}
                 </div>
@@ -65,16 +66,14 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
 
     const submitRev = (e) => {
         e.preventDefault()
-        setErrors([])
-        return dispatch(reviewActions.newSubmitReview(userId, spotId, review))
-        .catch(async (res) => {
-            const data = await res.json();
-            if(data && data.errors) setErrors(data.errors)
-            else {
-                setReview("")
-                setForceUpdate(!forceUpdate)
-            }
-            });
+        if(review === "") {
+            setErrors(['field is required'])
+        } else {
+            setErrors([])
+            dispatch(reviewActions.newSubmitReview(userId, spotId, review))
+            setReview("")
+            setForceUpdate(!forceUpdate)
+        }
     }
 
     useEffect(() => {
@@ -87,12 +86,10 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
                 className="formReviewBox"
                 type="textarea"
                 value={review}
-                required
+                required='required'
                 onChange={(e) => {
-                setReview(e.target.value)}} />
+                setReview(e.target.value)}}></textarea>
                 <button className="submitReviewBtn" onClick={submitRev}>Submit Review</button>
-                <ul>
-                </ul>
             </div>
             <div className="errorDiv">
                 {errors.map((error, errorId) => (

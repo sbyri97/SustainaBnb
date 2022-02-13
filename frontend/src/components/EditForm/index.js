@@ -200,7 +200,7 @@ export function EditHostForm({ sessionUser, spot }) {
       case 10:
         return <Success />;
       case 11:
-        return <Redirect to={`/api/users/${sessionUser.id}/spots`} />
+        return <Redirect to={`/users/${sessionUser.id}/spots`} />
     }
   };
 

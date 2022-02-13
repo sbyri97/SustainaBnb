@@ -24,8 +24,8 @@ export default function StepFooter({
           type="button"
           onClick={nextStep}
         >
-          {step === 8 ? "Submit Property" : "Next"}
-          {step === 9 ? " View Listings" : ""}
+          {step === 9 ? "Submit Property" : "Next"}
+          {step === 10 ? " View Listings" : ""}
         </button>
       </div>
     </div>

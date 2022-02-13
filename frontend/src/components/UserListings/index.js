@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spot';
 import UserListings from './userListingsCards'
@@ -22,6 +23,21 @@ export default function UserSpots() {
     }
   }, [activeUser, dispatch]);
 
+  const history = useHistory()
+
+  const editButton = (e) => {
+    e.preventDefault();
+    let path = `/users/${activeUser.id}/spot/edit/${spot.id}`
+    history.push(path)
+  }
+
+  const [deleteSpot, setheleteSpot] = useState()
+  const handleDelete = (e) => {
+    e.preventDefault();
+    dispatch(spotActions.deleteSpot(spot.id, activeUser.id))
+    setheleteSpot(true)
+  }
+
   // if(!userSpotsArray) return null
   // console.log('this', userSpotsArray.length);
   return (
@@ -35,36 +51,76 @@ export default function UserSpots() {
             <div className='mainUserSpots'>
               <div className='mainTableDiv'>
               <table className="mainTable">
-                <thead className='tableHead'>
-                  <tr className='tableHeadRow'>
-                    <th className='thListing'>
+                <thead className='tableHead'  key={'sbthd1'}>
+                  <tr className='tableHeadRow' key={'sbtr1'}>
+                    <th className='thListing' key={'sbtr2'}>
                       LISTING NAME
                     </th>
-                    <th className='thStatus'>
+                    <th className='thStatus' key={'sbtr3'}>
                       STATUS
                     </th>
-                    <th className='thBedrooms'>
+                    <th className='thBedrooms' key={'sbtr4'}>
                       BEDROOMS
                     </th>
-                    <th className='thBeds'>
+                    <th className='thBeds' key={'sbtr5'}>
                       BEDS
                     </th>
-                    <th className='thBaths'>
+                    <th className='thBaths' key={'sbtr6'}>
                       BATHS
                     </th>
-                    <th className='thLocation'>
+                    <th className='thLocation' key={'sbtr7'}>
                       LOCATION
                     </th>
-                    <th className='thEdit'>
+                    <th className='thEdit' key={'sbtr8'}>
                       MODIFY
                     </th>
-                    <th className='thDelete'>
+                    <th className='thDelete' key={'sbtr9'}>
                       REMOVE
                     </th>
                   </tr>
                 </thead>
                 <tbody className='tableBody'>
-                  {userSpotsArray.map((spot) => <tr className='tableBodyRow'><UserListings spot={spot} key={spot.id} /></tr>)}
+                  {userSpotsArray.map((spot) =>
+                  <tr className='tableBodyRow' key={spot.id}>
+                      <th className="spotName">
+                        {spot.name}
+                      </th>
+                      <th className="spotStatus">
+                        <i className="fas fa-check" />
+                      </th>
+                      <th className="spotBedroom">
+                        {spot?.bedroomCount}
+                      </th>
+                      <th className="spotBed">
+                        {spot.bedCount}
+                      </th>
+                      <th className="spotBath">
+                        {spot.bedCount}
+                      </th>
+                      <th className="spotLocation">
+                        {spot.city}, {spot.country}
+                      </th>
+                      <th className="editButtons">
+                        <button className="actualEdit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          let path = `/users/${activeUser.id}/spot/edit/${spot.id}`
+                          history.push(path)
+                        }}>
+                          Edit
+                        </button>
+                      </th>
+                      <th className="deleteButtons">
+                        <button className="actualEdit"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          dispatch(spotActions.deleteSpot(spot.id, activeUser.id))
+                          setheleteSpot(true)
+                        }}>
+                          Delete
+                        </button>
+                      </th>
+                  </tr>)}
                 </tbody>
               </table>
               </div>

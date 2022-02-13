@@ -11,9 +11,10 @@ import Reviews from '../Reviews';
 function IndividualSpot() {
     const {spotId} = useParams()
     const spot = useSelector((state) => state.spot.spot[spotId]);
+    console.log('this is spotId', spot?.userId);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
-    const [review, setReview] = useState()
+    const [review, setReview] = useState("")
     const allReviews = useSelector((state) => state.review.review)
     const reviewsArr = Object.values(allReviews)
 
@@ -87,7 +88,7 @@ function IndividualSpot() {
                             </div>
                         </div>
                         <div className="spotReviewBox">
-                            <Reviews review={review} setReview={setReview} spotId={spotId} spotUserId={spot.userId} reviewsArr={reviewsArr}/>
+                            <Reviews review={review} setReview={setReview} spotId={spotId} spotUserId={spot?.userId} reviewsArr={reviewsArr}/>
                         </div>
                     </div>
                 ) : (

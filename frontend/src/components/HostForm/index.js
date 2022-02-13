@@ -20,13 +20,13 @@ export default function MainHostForm() {
   const sessionUser = useSelector((state) => state.session.user);
   const [step, setStep] = useState(0);
 
-  const [propertyType, setPropertyType] = useState();
-  const [privacyType, setPrivacyType] = useState();
+  const [propertyType, setPropertyType] = useState("");
+  const [privacyType, setPrivacyType] = useState("");
 
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState();
-  const [country, setCountry] = useState();
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
 
   const [imageUrl, setImageUrl] = useState("")
 
@@ -193,7 +193,7 @@ if (sessionUser) {
       case 10:
         return <Success />;
       case 11:
-        return <Redirect to={`/api/users/${sessionUser.id}/spots`} />
+        return <Redirect to={`/users/${sessionUser.id}/spots`} />
     }
   };
 

@@ -8,6 +8,7 @@ import MainHostForm from "./components/HostForm/";
 import UserSpots from "./components/UserListings";
 import IndividualSpot from './components/IndividualSpot'
 import LaodingData from "./components/EditForm";
+import { AllSpots } from "./components/AllSpots";
 
 
 
@@ -25,19 +26,22 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/spots">
+            <AllSpots />
+          </Route>
           <Route exact path="/signup">
             <SignUpForm />
           </Route>
-          <Route path='/spot/:spotId'>
+          <Route path='/spots/:spotId'>
             <IndividualSpot />
           </Route>
           <Route path="/host-property">
             <MainHostForm />
           </Route>
-          <Route path={`/api/users/:userId/spots`}>
+          <Route path={`/users/:userId/spots`}>
             <UserSpots />
           </Route>
-          <Route path={`/api/users/:userId/spot/edit/:spotId`}>
+          <Route path={`/users/:userId/spot/edit/:spotId`}>
             <LaodingData />
           </Route>
         </Switch>
