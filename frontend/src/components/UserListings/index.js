@@ -73,9 +73,12 @@ export default function UserSpots() {
                        LOCATION
                      </th>
                      <th className='thEdit' key={'sbtr8'}>
+                       VIEW SPOT
+                     </th>
+                     <th className='thEdit' key={'sbtr9'}>
                        MODIFY
                      </th>
-                     <th className='thDelete' key={'sbtr9'}>
+                     <th className='thDelete' key={'sbtr10'}>
                        REMOVE
                      </th>
                    </tr>
@@ -100,6 +103,16 @@ export default function UserSpots() {
                        </th>
                        <th className="spotLocation">
                          {spot.city}, {spot.country}
+                       </th>
+                       <th className="editButtons">
+                         <button className="actualEdit"
+                         onClick={(e) => {
+                           e.preventDefault();
+                           let path = `/spots/${spot.id}`
+                           history.push(path)
+                         }}>
+                           View
+                         </button>
                        </th>
                        <th className="editButtons">
                          <button className="actualEdit"
