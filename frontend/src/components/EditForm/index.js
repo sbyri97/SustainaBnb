@@ -44,9 +44,9 @@ export function EditHostForm({ sessionUser, spot }) {
   const [guestCount, setGuestCount] = useState(spot?.guestCount);
   const [bedCount, setBedCount] = useState(spot?.bedCount);
   const [bedroomCount, setBedroomCount] = useState(spot?.bedroomCount);
-  const [bathCount, setBathCount] = useState(spot?.bathCount);
+  const [bathCount, setBathCount] = useState(parseInt(spot?.bathCount));
   const [name, setName] = useState(spot?.name);
-  const [price, setPrice] = useState(spot?.price);
+  const [price, setPrice] = useState(parseInt(spot?.price));
   const [description, setDescription] = useState(spot?.description);
   const userId = sessionUser.id
   const spotId = spot.id
@@ -184,7 +184,7 @@ export function EditHostForm({ sessionUser, spot }) {
         return <Name name={name} setName={setName} />;
       case 7:
         return (
-          <Price nextStep={nextStep} prevStep={prevStep} states={states} />
+          <Price nextStep={nextStep} prevStep={prevStep} price={price} setPrice={setPrice}/>
         );
       case 8:
         return (

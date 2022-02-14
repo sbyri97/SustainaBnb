@@ -1,8 +1,6 @@
 import React from "react";
 
-export default function Price({ nextStep, prevStep, states }) {
-
-  const { price, setPrice } = states;
+export default function Price({ nextStep, prevStep, price, setPrice }) {
 
   return (
     <div className="price-container">
