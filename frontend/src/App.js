@@ -36,17 +36,20 @@ function App() {
           <Route exact path="/signup">
             <SignUpForm />
           </Route>
-          <Route path='/spots/:spotId'>
+          <Route exact path={`/spots/:spotId`}>
             <IndividualSpot />
           </Route>
-          <Route path="/host-property">
+          <Route exact path="/host-property">
             <MainHostForm />
           </Route>
-          <Route path={`/users/:userId/spots`}>
+          <Route exact path={`/users/:userId/spots`}>
             <UserSpots />
           </Route>
-          <Route path={`/users/:userId/spot/edit/:spotId`}>
+          <Route exact path={`/users/:userId/spot/edit/:spotId`}>
             <LaodingData />
+          </Route>
+          <Route>
+            <h2 style={{marginTop: "60px"}}>404 Error! Go Back</h2>
           </Route>
         </Switch>
       )}
