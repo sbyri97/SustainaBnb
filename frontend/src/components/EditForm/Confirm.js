@@ -31,6 +31,7 @@ export default function Confirm({ states }) {
       return "Entire";
     } else return "Private";
   };
+  console.log(imageUrl);
 
   return (
     <div className="outerMostBox">

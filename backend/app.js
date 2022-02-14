@@ -22,7 +22,7 @@ if(!isProduction) {
 }
 
 //helmet for diff headers to secure app
-app.use(helmet.crossOriginEmbedderPolicy({
+app.use(helmet.crossOriginResourcePolicy({
     policy: "cross-origin"
 }));
 
