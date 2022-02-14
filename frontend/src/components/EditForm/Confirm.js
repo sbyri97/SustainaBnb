@@ -10,6 +10,7 @@ export default function Confirm({ states }) {
     city,
     state,
     country,
+    imageUrl,
     guestCount,
     bedCount,
     bedroomCount,
@@ -36,7 +37,7 @@ export default function Confirm({ states }) {
       <div className="outerBox">
         <div className="innerBox">
           <div className="confirmImg">
-            <img className="imgPrev"></img>
+            <img className="imgPrev" src={imageUrl}/>
           </div>
           <h1 className="confirmTitle">{name}</h1>
           <div className="confirmPropType">
