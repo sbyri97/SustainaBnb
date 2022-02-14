@@ -10,6 +10,11 @@ import IndividualSpot from './components/IndividualSpot'
 import LaodingData from "./components/EditForm";
 import { AllSpots } from "./components/AllSpots";
 import MainPage from "./components/MainPage";
+import { Paris } from "./components/CitySpots/paris";
+import { JoshuaTree } from "./components/CitySpots/joshuaTree";
+import { Copenhagen } from "./components/CitySpots/copenhagen";
+import { Amsterdam } from "./components/CitySpots/amsterdam";
+
 
 
 
@@ -38,6 +43,18 @@ function App() {
           </Route>
           <Route exact path={`/spots/:spotId`}>
             <IndividualSpot />
+          </Route>
+          <Route exact path='/spots/spotsbycity/Paris'>
+            <Paris />
+          </Route>
+          <Route exact path='/spots/spotsbycity/Joshua Tree'>
+            <JoshuaTree />
+          </Route>
+          <Route exact path='/spots/spotsbycity/Copenhagen'>
+            <Copenhagen />
+          </Route>
+          <Route exact path='/spots/spotsbycity/Amsterdam'>
+            <Amsterdam />
           </Route>
           <Route exact path="/host-property">
             <MainHostForm />

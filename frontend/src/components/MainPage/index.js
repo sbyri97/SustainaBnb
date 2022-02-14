@@ -6,14 +6,17 @@ import amsterdam from '../../images/amsterdam.png'
 import denmark from '../../images/denmark.png'
 import joshua from '../../images/joshua.png'
 import { useHistory } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import * as spotsAction from '../../store/spot'
 
 
 export default function MainPage() {
     let user = useSelector((state) => state.session.user)
     let userId = user?.id
 
-    let history = useHistory()
+    let history = useHistory();
+    const dispatch = useDispatch();
+
     const allprops = (e) => {
         e.preventDefault()
         let path = '/spots'
@@ -27,10 +30,11 @@ export default function MainPage() {
     }
 
     const viewprops = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         let path = `/users/${userId}/spots`
         history.push(path)
     }
+
     return (
         <div className='homePageMainBox'>
             <div className='homePageBlackBox'>
@@ -59,25 +63,25 @@ export default function MainPage() {
                     <h2 className='cardText'>Inspiration for your next trip</h2>
                 </div>
                 <div className='homePageCardsOuterBox'>
-                    <a className='homePageCards'>
+                    <a className='homePageCards' href='/spots/spotsbycity/Paris'>
                         <img className='homePageIndivCard' src={paris}/>
                         <div className='cardImageTextBoxOne'>
                             <h2 className='cardImageText'>Paris</h2>
                         </div>
                     </a>
-                    <a className='homePageCards'>
+                    <a className='homePageCards' href='/spots/spotsbycity/Joshua Tree'>
                         <img className='homePageIndivCard' src={joshua}/>
                         <div className='cardImageTextBoxTwo'>
                             <h2 className='cardImageText'>Joshua Tree</h2>
                         </div>
                     </a>
-                    <a className='homePageCards'>
+                    <a className='homePageCards' href='/spots/spotsbycity/Copenhagen'>
                         <img className='homePageIndivCard' src={denmark}/>
                         <div className='cardImageTextBoxThree'>
                             <h2 className='cardImageText'>Copenhagen</h2>
                         </div>
                     </a>
-                    <a className='homePageCards'>
+                    <a className='homePageCards' href='/spots/spotsbycity/Amsterdam'>
                         <img className='homePageIndivCard' src={amsterdam}/>
                         <div className='cardImageTextBoxFour'>
                             <h2 className='cardImageText'>Amsterdam</h2>

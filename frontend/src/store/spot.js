@@ -8,6 +8,7 @@ const REMOVE_SPOT = 'spot/REMOVESPOT'
 const EDIT_SPOT = 'spot/EDITSPOT'
 const SINGLE_SPOT = 'spot/SINGLESPOT'
 const GET_ALL_SPOTS = 'spot/GETALLSPOTS'
+const GET_CITY_SPOTS = 'spots/GETCITYSPOTS'
 
 const submitSpot = (spot) => {
     return {
@@ -51,6 +52,13 @@ const getAllListings = (allSpots) => {
     }
 }
 
+const getCityListings = (citySpots) => {
+    return {
+        type: GET_CITY_SPOTS,
+        citySpots
+    }
+}
+
 export const indivSpot = (spotId) => async(dispatch) => {
     const response = await fetch(`/api/spot/${spotId}`);
 
@@ -63,6 +71,13 @@ export const getAllSpots = () => async(dispatch) => {
 
     const allSpots = await response.json()
     dispatch(getAllListings(allSpots))
+}
+
+export const getCitySpots = (city) => async(dispatch) => {
+    const response = await fetch(`/api/spot/spotsbycity/${city}`);
+
+    const citySpots = await response.json()
+    dispatch(getCityListings(citySpots))
 }
 
 export const newSpot = (spot) => async(dispatch) => {
@@ -172,6 +187,16 @@ export default function spotReducer(state = initialState, action) {
             newState.spot = {}
             action.allSpots.forEach((eachSpot) => {
                 newState.spot[eachSpot.id] = eachSpot
+            })
+            return {
+                ...state,
+                ...newState
+            }
+        case GET_CITY_SPOTS:
+            newState = {...state}
+            newState.spot = {}
+            action.citySpots.forEach((eachCitySpot) => {
+                newState.spot[eachCitySpot.id] = eachCitySpot
             })
             return {
                 ...state,

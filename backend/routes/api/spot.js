@@ -67,6 +67,19 @@ router.get('/:spotId(\\d+)', asyncHandler(async (req, res) => {
 
 }));
 
+router.get('/spotsbycity/:city', asyncHandler(async (req, res) => {
+  const { city } = req.params
+
+  const citySpots = await Spot.findAll({
+    where: {
+      city: city
+    },
+    include: Review
+  });
+
+  return res.json(citySpots)
+}))
+
 // post to the form route
 router.post(
   '/',
