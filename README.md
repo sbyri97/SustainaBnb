@@ -16,21 +16,20 @@
 
 5. Use your database USERNAME (e.g. 'user') and PASSWORD (e.g. 'password'). Next add a databse name of your choice as well as a PORT for the localhost (note: 5000 is the preferred PORT to use). After the PORT of your choice, create a ``` JWT_SECRET ``` of your choice (make a secured combination).
 
-6. 
+6. Next add a proxy to the package.json file that is located in your frontend directory. Make sure to use the PORT that you created. 
+    ```"proxy": "http://localhost:PORT THAT YOU USED" ``` Example: ```"proxy": "http://localhost:5000"```
+    
+7. Now its time to create your database. Run the following command in your backend terminal.
 
-Fill out file with your desired PORT (5000 preferred), database name/username/password, and a secured JWT_SECRET.
-Add this proxy ti your package.json within the frontend directory, replacing or keeping the port defined in your .env file.
+  ```npx dotenv sequelize db:create```
+  
+8. Now migrate and seed the exisiting models using the following commands.
+  
+    ```npx dotenv sequelize db:migrate```
+    ```npx dotenv sequelize db:seed:all```
+    
+9. Its now time to start your backend server using the following command: ```npm start```
 
-"proxy": "http://localhost:5000"
-Create the database and run the migrations then seeders.
+10. The frontend server should also be started using the same command. However open a new terminal and navigate to the frontend folder and run the ``` npm start ``` command.
 
-npx dotenv sequelize db:create
-npx dotenv sequelize db:migrate
-npx dotenv sequelize db:seed:all
-To start the backend directory
-
-npm start
-To start the frontend which will default to opening in your browser, if not navigate to http:/localhost:3000
-
-npm start
-Sign up or login in as a Demo User to explore the site freely.
+11. You can now use the application. Feel free to user the demo user login found under the sign up tab or craete a user of your own.
