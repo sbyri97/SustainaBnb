@@ -1,0 +1,175 @@
+.homePageMainBox{
+    min-width: 1000px;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+
+}
+
+.homePageBlackBox {
+    min-height: 912px;
+    min-width: 1000px;
+    background-color: black;
+
+}
+
+.homePagePropertBtns {
+    margin-top: 50px;
+    color: white;
+    display: flex;
+    min-height: 70px;
+    min-width: 150px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 30px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 24px;
+}
+
+.propBtn{
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.h2propBtn{
+    font-size: 12px;
+    margin: 0px;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    background-image: linear-gradient(90deg, #6F019C 0%, #C6017E 135.12%);
+    background-size: 100%;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #6F019C;
+}
+
+.homePageImageBox{
+    height: 568px;
+    width: 1210px;
+    /* background-color: white; */
+    margin: 0px auto;
+    padding-top: 90px
+}
+
+.homePageImage{
+    max-width: 1210px;
+    margin-top: 60px;
+    border-radius: 16px;
+}
+
+.homePageTextBox {
+    color:white;
+    height: 50px;
+    position: absolute;
+    z-index: 1;
+    bottom: 40px;
+    right: 400px
+}
+
+.homePageText {
+    height: 50px;
+    font-size: 48px;
+
+}
+
+.exploreText {
+    font-size: 15px;
+    background-image: linear-gradient(90deg, #6F019C 0%, #C6017E 135.12%);
+    background-size: 100%;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: #6F019C;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.homePageImageBtn {
+    margin-left: 256px;
+    height: 50px;
+    width: 150px;
+    border-radius: 48px;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+.homePageCardBox{
+    height: 594px;
+    padding: 96px 0px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 120px;
+    margin-right: 120px;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+
+}
+
+.cardTextBox {
+    font-size: 28px;
+    padding-bottom: 48px;
+}
+
+.homePageCardsOuterBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.homePageCards {
+    border: none;
+    width: 275px;
+    height: 404px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+
+}
+
+.homePageIndivCard {
+    object-fit: cover;
+    object-position: center center;
+    vertical-align: bottom;
+    height: 242px;
+    max-width: 275px;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.cardImageTextBoxOne{
+    border-radius: 0px 0px 16px 16px;
+    background-color: rgb(202, 48, 77);
+    height: 162px;
+    justify-content: flex-end;
+}
+
+.cardImageText{
+    color:white;
+    font-size: 30px;
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 600;
+    font-family: 'Circular', -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+}
+
+.cardImageTextBoxTwo{
+    border-radius: 0px 0px 16px 16px;
+    background-color: rgb(215, 61, 55);
+    height: 162px;
+    justify-content: flex-end;
+}
+
+.cardImageTextBoxThree{
+    border-radius: 0px 0px 16px 16px;
+    background-color: rgb(186, 33, 110);
+    height: 162px;
+    justify-content: flex-end;
+}
+
+.cardImageTextBoxFour{
+    border-radius: 0px 0px 16px 16px;
+    background-color: rgb(220, 52, 84);
+    height: 162px;
+    justify-content: flex-end;
+}

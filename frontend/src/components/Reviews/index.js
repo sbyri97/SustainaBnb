@@ -12,14 +12,11 @@ function Reviews({review, setReview, spotId, spotUserId, reviewsArr}) {
         e.preventDefault()
         setShowReviewBox(!showReviewBox)
     }
-    console.log('this is indiv', reviewsArr);
     const date = new Date(reviewsArr.createdAt)
     const month = date.toLocaleString('default', { month: 'long' });
     const year = date.getFullYear()
 
-    // useEffect(() => {
-    //     setShowReviewBox(true)
-    // }, [showReviewBox])
+
     return (
         <div className="reviewOuterBox">
             <div className="reviewInnerBox">
@@ -79,6 +76,8 @@ function ReviewBox({review, setReview, sessionUser, spotId}) {
     useEffect(() => {
         dispatch(reviewActions.receiveReviews(spotId))
     }, [dispatch, forceUpdate])
+
+
     return (
         <div className="postReviewOuterBox">
             <div className="postReviewInnerBox">

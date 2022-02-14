@@ -11,7 +11,6 @@ import Reviews from '../Reviews';
 function IndividualSpot() {
     const {spotId} = useParams()
     const spot = useSelector((state) => state.spot.spot[spotId]);
-    console.log('this is spotId', spot?.userId);
     const dispatch = useDispatch();
     const [loading, setLoading] = useState(true);
     const [review, setReview] = useState("")

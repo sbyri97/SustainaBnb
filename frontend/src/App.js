@@ -9,6 +9,7 @@ import UserSpots from "./components/UserListings";
 import IndividualSpot from './components/IndividualSpot'
 import LaodingData from "./components/EditForm";
 import { AllSpots } from "./components/AllSpots";
+import MainPage from "./components/MainPage";
 
 
 
@@ -26,6 +27,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+            <MainPage />
+          </Route>
           <Route exact path="/spots">
             <AllSpots />
           </Route>
