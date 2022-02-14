@@ -1,1 +1,36 @@
 # SustainaBnb
+
+1. Clone this repo at:
+
+* git clone git@github.com:sbyri97/SustainaBnb.git
+
+2. Next Install dependencies:
+
+* go into the directory where you cloned the repo and in the root and run ``` npm install ``` in your terminal.
+
+3. After installing your dependencies, create a POSTGRESQL user with a PASSWORD and allow CREATEDB privledges using CREATEDB
+
+```CREATE USER 'user' WITH PASSWORD 'password' CREATEDB;``` (note: make sure to include the semicolon at the end)
+
+4. Next from your root directory, cd into the backend folder ``` cd backend ``` and create a ```.env``` file. Follow the ```.env.example``` file in the backend directory and use it as a reference.
+
+5. Use your database USERNAME (e.g. 'user') and PASSWORD (e.g. 'password'). Next add a databse name of your choice as well as a PORT for the localhost (note: 5000 is the preferred PORT to use). After the PORT of your choice, create a ``` JWT_SECRET ``` of your choice (make a secured combination).
+
+6. 
+
+Fill out file with your desired PORT (5000 preferred), database name/username/password, and a secured JWT_SECRET.
+Add this proxy ti your package.json within the frontend directory, replacing or keeping the port defined in your .env file.
+
+"proxy": "http://localhost:5000"
+Create the database and run the migrations then seeders.
+
+npx dotenv sequelize db:create
+npx dotenv sequelize db:migrate
+npx dotenv sequelize db:seed:all
+To start the backend directory
+
+npm start
+To start the frontend which will default to opening in your browser, if not navigate to http:/localhost:3000
+
+npm start
+Sign up or login in as a Demo User to explore the site freely.
