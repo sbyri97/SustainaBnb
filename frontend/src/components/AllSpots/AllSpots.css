@@ -133,6 +133,7 @@
     padding: 10px 0px;
     display: flex;
     text-decoration: none;
+    color: black;
   }
 
   a:visited {
@@ -145,5 +146,5 @@
 }
   a:hover, a:active {
       text-decoration: none;
-      color:black
+      color:black;
 }

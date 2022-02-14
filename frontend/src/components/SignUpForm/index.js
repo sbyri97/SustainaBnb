@@ -45,43 +45,45 @@ function SignUpForm () {
                         <li key={errorId}>{error}</li>
                     )}
                 </ul>
-                <label>
-                    Username
+                <label className='forminputs'>
                     <input
                         type="text"
+                        placeholder='Username'
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
                     />
                 </label>
-                <label>
-                    Email
+                <label className='forminputs'>
                     <input
                         type="text"
+                        placeholder='Email'
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                 </label>
-                <label>
-                    Password
+                <label className='forminputs'>
                     <input
                         type="password"
+                        placeholder='Password'
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </label>
-                <label>
-                    Confirm Password
+                <label className='forminputs'>
                     <input
                         type="password"
+                        placeholder='Confirm Password'
                         value={confirmPassword}
                         onChange={(e) => setConfrimPassword(e.target.value)}
                         required
                     />
                 </label>
-                <button type='submit'>Sign Up</button>
+                <div className='submitButtons'>
+                    <button className='submitBtn' type='submit'>Sign Up</button>
+                </div>
             </form>
             <div className='demoUserBox'>
                 <button className='demoUserBtn' onClick={demoClick}>Demo User</button>

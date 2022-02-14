@@ -1,3 +1,21 @@
 .signupbox {
     margin-top: 100px;
 }
+
+.signUpPageBox {
+    width: 500px;
+    padding: 20px 500px;
+
+}
+
+.demoUserBtn {
+    margin-top: 10px;
+    padding: 15px 10px 15px 10px;
+    width: 100%;
+    color:white;
+    background: rgb(24, 24, 24);
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}

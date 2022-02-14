@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as sessionActions from '../../store/session';
+import './LoginForm.css'
 
 
 function LoginForm () {
@@ -20,28 +21,36 @@ function LoginForm () {
     }
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className='formMainDiv' onSubmit={handleSubmit}>
             <ul>
                 {errors.map((error, errorId) => (
                 <li key={errorId}>{error}</li>
                 ))}
             </ul>
-            <label>
-                Username or Email
-                <input
-                    type="text"
-                    value={credential}
-                    onChange={(e) => setCredential(e.target.value)}
-                    required
-                 />
-                <input
-                    type="text"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </label>
-            <button type='submit'>Log In</button>
+            <div className='formWelcomeBox'>
+                <h2 className='formWelcomeText'>Welcome to SustainaBnb</h2>
+            </div>
+            <div>
+                <label className='forminputs'>
+                    <input
+                        type="text"
+                        placeholder='Username or Email'
+                        value={credential}
+                        onChange={(e) => setCredential(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="password"
+                        placeholder='Password'
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </label>
+            </div>
+            <div className='submitButtons'>
+                <button className='submitBtn' type='submit'>Log In</button>
+            </div>
         </form>
     );
 }
