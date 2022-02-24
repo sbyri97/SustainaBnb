@@ -25,7 +25,9 @@
 
 6. Next add a proxy to the package.json file that is located in your frontend directory. Make sure to use the PORT that you created. 
 
-    ```"proxy": "http://localhost:PORT THAT YOU USED" ``` Example: ```"proxy": "http://localhost:5000"```
+    ```"proxy": "http://localhost:PORT THAT YOU USED" ``` 
+    
+    Example: ```"proxy": "http://localhost:5000"```
     
 7. Now its time to create your database. Run the following command in your backend terminal.
 
