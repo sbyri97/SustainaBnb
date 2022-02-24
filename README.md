@@ -1,7 +1,7 @@
 
 <h1 align="center">
     # SustainaBnb
-</1>
+</h1>
 
 1. Clone this repo at:
 
