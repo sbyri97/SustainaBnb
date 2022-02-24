@@ -3,13 +3,44 @@
     SustainaBnb
 </h1>
 
+
 <p align="center">
     <a href="https://sustainabnb.herokuapp.com/">Live App</a>
+</p>
+
+
+<p align="center">
+    Home Page
 </p>
 
 <p align="center">
     <img src="https://media.giphy.com/media/wspRwT45FrxGNvK5Xc/giphy.gif" />
 </p>
+
+<p align="center">
+    Properties Around The World
+</p>
+
+<p align="center">
+    <img src="https://media.giphy.com/media/3yOAwHeg7KjbKdZ9Tm/giphy.gif" />
+</p>
+
+<p align="center">
+    Property
+</p>
+
+<p align="center">
+    <img src="https://media.giphy.com/media/P6Ar5OEg2mVMfwGO1r/giphy.gif" />
+</p>
+
+<p align="center">
+    Hosting Your Property
+</p>
+
+<p align="center">
+    <img src="https://media.giphy.com/media/y8mjvwRckLQkg7VVP9/giphy.gif" />
+</p>
+
 
 1. Clone this repo at:
 
