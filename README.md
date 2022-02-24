@@ -1,6 +1,6 @@
 
 <h1 align="center">
-    # SustainaBnb
+    SustainaBnb
 </h1>
 
 1. Clone this repo at:
