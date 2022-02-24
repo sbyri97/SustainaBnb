@@ -8,6 +8,15 @@
     <a href="https://sustainabnb.herokuapp.com/">Live App</a>
 </p>
 
+<p align="center">
+    Sustainabnb is an Airbnb clone that allows us to stay at sustainable places around the world while travelling. Sustainable properties can be hosted by anyone. Property Owners also have the ability to change and delete their listings. Everyone but the property owner can also create reviews for various listings. Explore the uniquely beautiful sustainable properties around the world!
+</p>
+
+
+<h2>
+    Project Preview
+</h2>
+
 
 <p align="center">
     Home Page
@@ -41,6 +50,10 @@
     <img src="https://media.giphy.com/media/y8mjvwRckLQkg7VVP9/giphy.gif" />
 </p>
 
+
+<h2>
+    Getting Started
+</h2>
 
 1. Clone this repo at:
 
