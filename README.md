@@ -34,6 +34,7 @@
 8. Now migrate and seed the exisiting models using the following commands.
   
     ```npx dotenv sequelize db:migrate```
+    
     ```npx dotenv sequelize db:seed:all```
     
 9. Its now time to start your backend server using the following command: 
