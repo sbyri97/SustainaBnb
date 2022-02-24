@@ -3,9 +3,9 @@
     SustainaBnb
 </h1>
 
-<a align="center">
-    Live App
-</a>
+<p align="center">
+    <a href="https://sustainabnb.herokuapp.com/">Live App</a>
+</p>
 
 1. Clone this repo at:
 
