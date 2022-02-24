@@ -7,6 +7,8 @@
     <a href="https://sustainabnb.herokuapp.com/">Live App</a>
 </p>
 
+<div> ![Home Page](https://media.giphy.com/media/wspRwT45FrxGNvK5Xc/giphy.gif)</div>
+
 1. Clone this repo at:
 
 * git clone git@github.com:sbyri97/SustainaBnb.git
