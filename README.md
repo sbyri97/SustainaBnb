@@ -7,7 +7,9 @@
     <a href="https://sustainabnb.herokuapp.com/">Live App</a>
 </p>
 
-<div> ![Home Page](https://media.giphy.com/media/wspRwT45FrxGNvK5Xc/giphy.gif)</div>
+<p align="center">
+    <img src="https://media.giphy.com/media/wspRwT45FrxGNvK5Xc/giphy.gif" />
+</p>
 
 1. Clone this repo at:
 
