@@ -1,4 +1,7 @@
-# SustainaBnb
+
+<h1 align="center">
+    # SustainaBnb
+</1>
 
 1. Clone this repo at:
 
