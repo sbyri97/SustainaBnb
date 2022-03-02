@@ -31,7 +31,7 @@
 </p>
 
 <p align="center">
-    <img src="https://media.giphy.com/media/3yOAwHeg7KjbKdZ9Tm/giphy.gif" />
+    <img src="https://media.giphy.com/media/45GBQe6U1xeKDryRa1/giphy.gif" />
 </p>
 
 <p align="center">
