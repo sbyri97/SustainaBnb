@@ -1,7 +1,7 @@
 .formMainDiv {
     display: flex;
     flex-direction: column;
-    margin: 10px 60px;
+    margin: 5px 60px;
     width: 500px;
     padding: 30px 20px;
 }
@@ -49,4 +49,17 @@
 .Modal{
     overflow: hidden;
     border-radius: 12px;
+}
+
+.demoUserLogBtn {
+    margin-left: 80px;
+    margin-bottom: 40px;
+    padding: 15px 10px 15px 10px;
+    width: 76%;
+    color:white;
+    background: rgb(24, 24, 24);
+    font-size: 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
 }
