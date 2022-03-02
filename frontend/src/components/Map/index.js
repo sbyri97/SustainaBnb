@@ -5,7 +5,7 @@ const myKey = process.env.REACT_APP_API_KEY
 
 export default function GoogleMap(){
   const onStartUpCenter = {
-    center: {
+    start: {
       lat: 37.773972,
       lng: -122.431297
     },
@@ -17,7 +17,7 @@ export default function GoogleMap(){
     <div className="mapApi">
       <GoogleMapReact
         bootstrapURLKeys={{ key: myKey }}
-        defaultCenter={onStartUpCenter.center}
+        defaultCenter={onStartUpCenter.start}
         defaultZoom={onStartUpCenter.zoom}
         yesIWantToUseGoogleMapApiInternals
       >
