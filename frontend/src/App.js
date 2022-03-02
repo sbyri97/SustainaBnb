@@ -10,6 +10,7 @@ import IndividualSpot from './components/IndividualSpot'
 import LaodingData from "./components/EditForm";
 import { AllSpots } from "./components/AllSpots";
 import MainPage from "./components/MainPage";
+import SimpleMap from "./components/Map";
 import { Paris } from "./components/CitySpots/paris";
 import { JoshuaTree } from "./components/CitySpots/joshuaTree";
 import { Copenhagen } from "./components/CitySpots/copenhagen";

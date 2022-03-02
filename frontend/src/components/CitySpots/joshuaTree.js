@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import * as spotActions from '../../store/spot'
 import { useDispatch, useSelector } from 'react-redux'
 import '../AllSpots/AllSpots.css'
-import map from '../../images/allMap.jpg'
+import GoogleMap from '../Map'
 import reviewStar from "../../images/reviewStar.png"
 
 export function JoshuaTree() {
@@ -80,7 +80,7 @@ export function JoshuaTree() {
                                 ))}
                             </div>
                             <div className='spotsMapImgDiv'>
-                                <img className='spotsMapImg' src={map}/>
+                                <GoogleMap/>
                             </div>
                         </div>
                     </div>

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import * as spotActions from '../../store/spot'
 import { useDispatch, useSelector } from 'react-redux'
 import './AllSpots.css'
-import map from '../../images/allMap.jpg'
 import reviewStar from "../../images/reviewStar.png"
+import GoogleMap from '../Map'
 
 
 export function AllSpots() {
@@ -85,7 +85,7 @@ const placeType = (spot) => {
                                 ))}
                             </div>
                             <div className='spotsMapImgDiv'>
-                                <img className='spotsMapImg' src={map}/>
+                                <GoogleMap/>
                             </div>
                         </div>
                     </div>
