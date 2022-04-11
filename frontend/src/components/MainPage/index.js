@@ -48,14 +48,14 @@ export default function MainPage() {
                 </div>
                 <div className='homePageImageBox'>
                     <img className='homePageImage' src={homepageimage}/>
-                    <div className='homePageTextBox'>
-                        <h2 className='homePageText'>Not sure where to go? Explore.</h2>
-                    <div className='homePageImageBtnBox'>
-                        <button className='homePageImageBtn' onClick={allprops}>
-                            <h2 className='exploreText'>Explore all places</h2>
-                        </button>
-                    </div>
-                    </div>
+                        <div className='homePageTextBox'>
+                            <h2 className='homePageText'>Not sure where to go? Explore.</h2>
+                        <div className='homePageImageBtnBox'>
+                            <button className='homePageImageBtn' onClick={allprops}>
+                                <h2 className='exploreText'>Explore all places</h2>
+                            </button>
+                        </div>
+                        </div>
                 </div>
             </div>
             <div className='homePageCardBox'>
