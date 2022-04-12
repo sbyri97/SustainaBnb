@@ -89,7 +89,7 @@ function IndividualSpot() {
                                   </div>
                               </div>
                               <div className="spotReviewBox">
-                                    <Bookings spotId={spotId} spotUserId={spot?.userId}/>
+                                    <Bookings spotId={spot?.id} spotUserId={spot?.userId}/>
                               </div>
                           </div>
                           <div className="spotReviewBox">

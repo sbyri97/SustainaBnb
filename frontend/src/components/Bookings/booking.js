@@ -1,6 +1,7 @@
 import React, {useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker"
+import { newBooking } from "../../store/booking";
 
 
 export const Bookings = ({spotId, spotUserId}) => {
@@ -38,20 +39,32 @@ function BookingBox({sessionUser, spotId}) {
     const [startDate, setStartDate] = useState();
     const [endDate, setEndDate] = useState();
     const [errors, setErrors] = useState([]);
+    const newDate = new Date()
+    newDate.setDate(newDate.getDate() - 1)
 
-    const submitBooking = (e) => {
+    const submitBooking = async (e) => {
         e.preventDefault()
-        
-        // dispatch
+        console.log(newDate);
+        if (startDate > endDate) {
+            setErrors("Start Date Cannot Be After End Date")
+        } else if (startDate < (newDate.setHours(0, 0, 0))) {
+            setErrors("Start Date Must Be In The Future")
+        } else {
+            const data = await dispatch(newBooking(userId, spotId, startDate, endDate))
+            if(data.error) {
+                setErrors(data.error)
+            }
+        }
     }
 
     return (
         <div className="booking-main-container">
             <form className="booking=form" onSubmit={submitBooking}>
                 <div className='errors'>
-                        {errors?.map((error, ind) => (
+                    <div>{errors}</div>
+                        {/* {errors?.map((error, ind) => (
                             <div key={ind}>{error}</div>
-                        ))}
+                        ))} */}
                 </div>
                 <div className="booking-start">
                     <label htmlFor="startDate">Check In Date</label>

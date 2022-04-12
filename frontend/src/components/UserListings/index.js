@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import * as spotActions from '../../store/spot';
-import UserListings from './userListingsCards'
+// import UserListings from './userListingsCards'
 import './UserListings.css'
 
 

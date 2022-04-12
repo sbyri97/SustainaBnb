@@ -51,12 +51,14 @@
     height: 97vh;
     width: 100vw;
     position: relative;
+    /* margin-top: 2%; */
 }
 
 .homePageImage{
     max-width: 90vw;
     border-radius: 16px;
     position: absolute;
+    margin-top: 5%;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
