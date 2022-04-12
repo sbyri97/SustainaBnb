@@ -41,6 +41,7 @@ function BookingBox({sessionUser, spotId}) {
 
     const submitBooking = (e) => {
         e.preventDefault()
+        
         // dispatch
     }
 

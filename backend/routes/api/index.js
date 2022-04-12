@@ -8,15 +8,17 @@ const sessionRouter = require('./session.js')
 const usersRouter = require('./users.js');
 const spotRouter = require('./spot')
 const homeRouter = require('./home')
+const bookingRouter = require('./booking')
 
+router.use('/booking', bookingRouter);
 
 router.use('/session', sessionRouter);
 
 router.use('/users', usersRouter);
 
-router.use('/spot', spotRouter)
+router.use('/spot', spotRouter);
 
-router.use('/', homeRouter)
+router.use('/', homeRouter);
 
 
 
