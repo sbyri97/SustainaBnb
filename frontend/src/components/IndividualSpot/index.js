@@ -88,9 +88,9 @@ function IndividualSpot() {
                                       ${spot?.price} / night
                                   </div>
                               </div>
-                          </div>
-                          <div className="spotReviewBox">
-                              <Bookings spotId={spotId} spotUserId={spot?.userId}/>
+                              <div className="spotReviewBox">
+                                    <Bookings spotId={spotId} spotUserId={spot?.userId}/>
+                              </div>
                           </div>
                           <div className="spotReviewBox">
                               <Reviews review={review} setReview={setReview} spotId={spotId} spotUserId={spot?.userId} reviewsArr={reviewsArr}/>
