@@ -15,6 +15,7 @@ import { Paris } from "./components/CitySpots/paris";
 import { JoshuaTree } from "./components/CitySpots/joshuaTree";
 import { Copenhagen } from "./components/CitySpots/copenhagen";
 import { Amsterdam } from "./components/CitySpots/amsterdam";
+import MyAccount from "./components/UserAccount/account";
 
 
 
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <Route exact path="/host-property">
             <MainHostForm />
+          </Route>
+          <Route exact path={`/users/:userId`}>
+            <MyAccount />
           </Route>
           <Route exact path={`/users/:userId/spots`}>
             <UserSpots />

@@ -2,7 +2,7 @@ const e = require('express');
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 
-const { Booking } = require('../../db/models')
+const { Booking, Spot } = require('../../db/models')
 const router = express.Router();
 
 const formatDate = (date) => {
@@ -24,7 +24,7 @@ const formatDate = (date) => {
 
 router.post('/', asyncHandler(async(req, res) => {
     const {userId, spotId, startDate, endDate} = req.body;
-    console.log('TSPIOT ID', spotId);
+
     const exisitingBookings = await Booking.findAll({
         where: {
             spotId: spotId
@@ -46,6 +46,30 @@ router.post('/', asyncHandler(async(req, res) => {
     const newBooking = await Booking.create({userId, spotId, startDate, endDate})
     return res.json(newBooking)
 
+}))
+
+router.get('/:userId(\\d+)', asyncHandler(async(req, res) => {
+    const{ userId } = req.params
+
+    const userBooking = await Booking.findAll({
+        where: {
+            userId: userId
+        },
+        include: Spot
+    });
+
+    return res.json(userBooking)
+
+}))
+
+router.delete('/delete', asyncHandler(async(req, res) => {
+    const { bookingId } = req.body
+
+    const toDeleteBooking = await Booking.findByPk(bookingId)
+
+    const deleteBooking = await toDeleteBooking.destroy()
+
+    return res.json(toDeleteBooking.id)
 }))
 
 // router.get('/', asyncHandler(async(req, res) => {
