@@ -15,7 +15,7 @@ export const Bookings = ({spotId, spotUserId}) => {
 
     return (
         <div className="booking-main-div">
-            {sessionUser !== spotUserId ? (
+            {sessionUser.id !== spotUserId ? (
             <div className="postReviewOuterMostBox">
                 <div className="revBtnDiv">
                     <button className="postReviewOpenBtn" onClick={onClick}>Reserve</button>
@@ -24,6 +24,8 @@ export const Bookings = ({spotId, spotUserId}) => {
                 <BookingBox
                 sessionUser={sessionUser}
                 spotId={spotId}
+                showBooking={showBooking}
+                setShowBooking={setShowBooking}
                 />
                 : null}
             </div>
@@ -33,7 +35,7 @@ export const Bookings = ({spotId, spotUserId}) => {
     )
 }
 
-function BookingBox({sessionUser, spotId}) {
+function BookingBox({sessionUser, spotId, showBooking, setShowBooking}) {
     const dispatch = useDispatch()
     const userId = sessionUser.id
     const [startDate, setStartDate] = useState();
@@ -44,7 +46,6 @@ function BookingBox({sessionUser, spotId}) {
 
     const submitBooking = async (e) => {
         e.preventDefault()
-        console.log(newDate);
         if (startDate > endDate) {
             setErrors("Start Date Cannot Be After End Date")
         } else if (startDate < (newDate.setHours(0, 0, 0))) {
@@ -53,6 +54,9 @@ function BookingBox({sessionUser, spotId}) {
             const data = await dispatch(newBooking(userId, spotId, startDate, endDate))
             if(data.error) {
                 setErrors(data.error)
+            } else {
+                setShowBooking(!showBooking)
+                alert("Booking Has Been Confirmed!")
             }
         }
     }

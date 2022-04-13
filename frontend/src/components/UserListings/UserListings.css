@@ -16,6 +16,14 @@
   border-collapse: collapse;
 }
 
+.spots-cards{
+  overflow-x: scroll;
+}
+
+.pageTitle{
+  margin-top: 4%;
+}
+
 .tableHead {
 
   vertical-align: middle;
