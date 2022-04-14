@@ -39,7 +39,7 @@ router.post('/', asyncHandler(async(req, res) => {
         let currEnd = formatDate(exisitingBookings[i].endDate);
 
         if((selectedStart < currEnd) && (currStart < selectedEnd)) {
-            return res.json({"error": "Property is already booked for thsoe dates. Please select new dates"})
+            return res.json({"error": "* Property is already booked for thsoe dates. Please select new dates"})
         };
     };
 

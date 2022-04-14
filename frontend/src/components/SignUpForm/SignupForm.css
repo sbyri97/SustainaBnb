@@ -4,7 +4,8 @@
 
 .signUpPageBox {
     width: 500px;
-    padding: 20px 500px;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -18,4 +19,11 @@
     border: none;
     border-radius: 12px;
     cursor: pointer;
+}
+
+.errors{
+    text-align: center;
+    margin: 2%;
+    color: red;
+    /* font-size: small; */
 }

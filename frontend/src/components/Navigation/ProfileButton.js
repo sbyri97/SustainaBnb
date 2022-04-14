@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch } from 'react-redux';
-import { Redirect, useHistory } from "react-router-dom";
+import { NavLink, Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from '../../store/session'
 import './Navigation.css'
 
@@ -11,7 +11,7 @@ function ProfileButton ({ user }) {
     const [menu, setMenu] = useState(false)
 
     const openMenu = () => {
-        if(menu) return;
+        if(!menu) return;
         setMenu(true);
     };
 
@@ -36,14 +36,25 @@ function ProfileButton ({ user }) {
 
     return (
         <div className="menuDetails">
-            <div className="menuUserLogo">
-                <i className="far fa-user-circle" />
-            </div>
-            <div className="profile-content">
+            <button className="menuUserLogo" onClick={e => setMenu(!menu)}>
                 <div className="profileUsername">{user.username}</div>
-                <div>
+                <i className="far fa-user-circle" />
+            </button>
+            {menu && (
+                <div className="navbar-menu-div">
+                    <div className="navbar-myprofile-btn">
+                        <NavLink to={`/users/${user.id}`}>My Account</NavLink>
+                    </div>
                     <button className="profileLogout" onClick={logout}>Log Out</button>
+                    <div className="navbar-abt-me">
+                        <NavLink to={'/aboutme'}>About Me</NavLink>
+                    </div>
                 </div>
+            )}
+            <div className="profile-content">
+                {/* <div>
+                    <button className="profileLogout" onClick={logout}>Log Out</button>
+                </div> */}
             </div>
         </div>
     )

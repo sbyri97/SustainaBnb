@@ -9,6 +9,8 @@ import Logo from "./logo"
 function Navigation ({ isLoaded }) {
     const sessionUser = useSelector((state) => state.session.user);
 
+
+
     let authLinks;
     if (sessionUser) {
         authLinks = (
@@ -21,9 +23,14 @@ function Navigation ({ isLoaded }) {
         authLinks = (
             <div className="navHeader">
                 <Logo />
-                <LoginFormModal />
-                <div className="signUpDiv">
-                    <NavLink className='signButton' to="/signup">Sign Up</NavLink>
+                <div className="login-btns-div">
+                    <LoginFormModal />
+                    <div className="signUpDiv">
+                        <NavLink className='signButton' to="/signup">SIGN UP</NavLink>
+                    </div>
+                    <div className="navbar-abt-me-lo">
+                        <NavLink to={'/aboutme'}>ABOUT ME</NavLink>
+                    </div>
                 </div>
             </div>
         );

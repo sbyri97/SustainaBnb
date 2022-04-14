@@ -40,12 +40,13 @@ function SignUpForm () {
     return (
         <div className='signUpPageBox'>
             <form onSubmit={handleSubmit} className='signupbox'>
-                <ul>
+                <ul className='errors'>
                     {errors.map((error, errorId) =>
                         <li key={errorId}>{error}</li>
                     )}
                 </ul>
                 <label className='forminputs'>
+                    Username
                     <input
                         type="text"
                         placeholder='Username'
@@ -55,6 +56,7 @@ function SignUpForm () {
                     />
                 </label>
                 <label className='forminputs'>
+                    Email
                     <input
                         type="text"
                         placeholder='Email'
@@ -64,6 +66,7 @@ function SignUpForm () {
                     />
                 </label>
                 <label className='forminputs'>
+                    Password
                     <input
                         type="password"
                         placeholder='Password'
@@ -73,6 +76,7 @@ function SignUpForm () {
                     />
                 </label>
                 <label className='forminputs'>
+                    Confirm Password
                     <input
                         type="password"
                         placeholder='Confirm Password'
