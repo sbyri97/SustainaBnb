@@ -111,7 +111,7 @@ if(activeUser) {
                         </div>
                         </div>
                     ) : (
-                        <h2>You do not have any listings</h2>
+                        <h2>You do not have any reservations</h2>
                     )}
                     </div>
                 )}

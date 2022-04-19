@@ -114,6 +114,7 @@ cursor: pointer;
   text-decoration: none;
   margin-bottom: 5px;
   font-size: 17px;
+  color: black;
 }
 
 .signUpDiv {
@@ -184,4 +185,12 @@ cursor: pointer;
 
 .navbar-abt-me {
   margin: 4%;
+}
+
+.navbar-myprofile-btn a{
+  color: black;
+}
+
+.navbar-abt-me a{
+  color: black;
 }
