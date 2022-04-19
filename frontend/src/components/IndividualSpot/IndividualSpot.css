@@ -80,8 +80,13 @@
 
 .spotDetails-guest {
     padding: 0px 0px 16px;
+    display: flex;
+    align-items: center;
 }
 
+.spotDetails-guest svg {
+    margin-right: 5px;
+}
 .spotImg{
     max-width: 100%;
     border-radius: 12px;
@@ -154,4 +159,10 @@ label.startDate{
 
 .total-price{
     font-weight: lighter;
+}
+
+.online-icons svg{
+    height: 2em;
+    width: 1.5em;
+    margin-right: 15px;
 }

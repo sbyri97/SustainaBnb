@@ -38,23 +38,29 @@ export default function MainPage() {
     return (
         <div className='homePageMainBox'>
             <div className='homePageBlackBox'>
-                <div className='homePagePropertBtns'>
+                {/* <div className='homePagePropertBtns'>
                     <button className='propBtn' onClick={hostprops}>
                         <h2 className='h2propBtn'>Host your property</h2>
-                        </button>
+                    </button>
                     <button className='propBtn' onClick={viewprops}>
                         <h2 className='h2propBtn'>View your properties</h2>
                     </button>
-                </div>
+                </div> */}
                 <div className='homePageImageBox'>
                     <img className='homePageImage' src={homepageimage}/>
                         <div className='homePageTextBox'>
                             <h2 className='homePageText'>Not sure where to go? Explore.</h2>
-                        <div className='homePageImageBtnBox'>
-                            <button className='homePageImageBtn' onClick={allprops}>
-                                <h2 className='exploreText'>Explore all places</h2>
-                            </button>
-                        </div>
+                            <div className='homePageImageBtnBox'>
+                                <button className='homePageImageBtn' onClick={viewprops}>
+                                    <h2 className='exploreText'>View your properties</h2>
+                                </button>
+                                <button className='homePageImageBtn' onClick={allprops}>
+                                    <h2 className='exploreText'>Explore all places</h2>
+                                </button>
+                                <button className='homePageImageBtn' onClick={hostprops}>
+                                    <h2 className='exploreText'>Host your property</h2>
+                                </button>
+                            </div>
                         </div>
                 </div>
             </div>

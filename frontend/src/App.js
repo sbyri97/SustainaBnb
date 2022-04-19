@@ -16,6 +16,7 @@ import { JoshuaTree } from "./components/CitySpots/joshuaTree";
 import { Copenhagen } from "./components/CitySpots/copenhagen";
 import { Amsterdam } from "./components/CitySpots/amsterdam";
 import MyAccount from "./components/UserAccount/account";
+import AboutMe from "./components/AboutMe/aboutme";
 
 
 
@@ -69,6 +70,9 @@ function App() {
           </Route>
           <Route exact path={`/users/:userId/spot/edit/:spotId`}>
             <LaodingData />
+          </Route>
+          <Route exact path='/aboutme'>
+            <AboutMe />
           </Route>
           <Route>
             <h2 style={{marginTop: "60px"}}>404 Error! Go Back</h2>

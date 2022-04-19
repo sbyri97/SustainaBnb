@@ -80,6 +80,7 @@
 
 .fa-user-circle {
 font-size: 30px;
+cursor: pointer;
 }
 
 .profile-content {
@@ -102,7 +103,7 @@ font-size: 30px;
 }
 
 .profileLogout:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .signButton {
